@@ -1,6 +1,6 @@
 void init_compass() {
 
-  bno.begin();
+  bno.begin(bno.OPERATION_MODE_IMPULS);
 
   // if(!bno.begin())
   //  {
@@ -17,7 +17,7 @@ void read_compass() {
 
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
 
-  lettura = euler.x();
+  read_imu = euler.x();
 
 }
 
