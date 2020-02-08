@@ -21,7 +21,7 @@ void read_compass() {
 
 }
 
-void test_compass(){
+void test_compass() {
 
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
 

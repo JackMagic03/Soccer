@@ -38,7 +38,7 @@ float Dw;       //L'Rw della matrice di Holon
 #define scl_compass 21
 #define sda_compass 20
 
-uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5  /*i 6 pin analogici dei sensori*/};
+uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5  /* i 6 pin analogici dei sensori */};
 
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 int read_imu;
@@ -51,11 +51,9 @@ void setup() {
 
   init_compass();
 
-  /*
-  Stampo i dati della matrice per poi scriverli all'inizio
-  */
-
   drive_init();
+
+  pixy.init();
 
 }
 
