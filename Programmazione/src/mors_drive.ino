@@ -2,6 +2,26 @@
 Libreria gestione rotazione e velocità dei singoli motori
  */
 
+extern uint8_t pinA[3]   = {4, 13, 7};   //giallo
+extern uint8_t pinB[3]   = {3, 12, 6};   //rosso
+extern uint8_t pinPwm[3] = {2, 11, 5};   //bianco
+
+extern uint8_t pot  = 150;
+extern uint8_t N_Mot  = 3;
+
+float vx;       //Componente velocità del'asse X
+float vy;       //Componente velocità dell'asse Y
+float Rw;       //Velocità angolare
+float Dw;       //L'Rw della matrice di Holon
+
+#define angoloMot_1 60.0
+#define angoloMot_2 180.0
+#define angoloMot_3 300.0
+
+#define limiteDw_Up 70.0
+#define limiteDw_Down -70.0
+#define KW 3.0
+
 float vel_1, vel_2, vel_3; //Settare le veocità del motore
 
 /*
@@ -86,8 +106,8 @@ void drive_init() {
 //Funzione che gestisce tutte le direzioni dei motori
 void drive_Go( int angolo, int velocita, int my_bussola) {
 
-  vx = velocita * sin ( drive_radianti (angolo - 270) ); //Sarebbe 360 - angolo, ma così facendo
-  vy = velocita * cos ( drive_radianti (angolo - 270) ); //il robot va avanti a 0° e a sinistra a 90°
+  vx = velocita * sin (angolo);//( drive_radianti (angolo - 270) ); //Sarebbe 360 - angolo, ma così facendo
+  vy = velocita * cos (angolo);//( drive_radianti (angolo - 270) ); //il robot va avanti a 0° e a sinistra a 90°
 
   //Portare la bussola da 0 - 360 a -180 - +180
   if(my_bussola <= 180) Rw = my_bussola;
@@ -101,7 +121,7 @@ void drive_Go( int angolo, int velocita, int my_bussola) {
   vel_1 = drive_Matrix [0][0] * vx + drive_Matrix [0][1] * vy + drive_Matrix [0][2] * Dw;
   vel_2 = drive_Matrix [1][0] * vx + drive_Matrix [1][1] * vy + drive_Matrix [1][2] * Dw;
   vel_3 = drive_Matrix [2][0] * vx + drive_Matrix [2][1] * vy + drive_Matrix [2][2] * Dw;
-  
+
   /*
   I calcoli per sapere le velocità e le direzioni dei singoli motori tramite le
   moltiplicazioni "riga * colonna"

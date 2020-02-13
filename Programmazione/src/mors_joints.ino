@@ -1,3 +1,16 @@
+uint8_t pinA[3]   = {4, 13, 7};   //giallo
+uint8_t pinB[3]   = {3, 12, 6};   //rosso
+uint8_t pinPwm[3] = {2, 11, 5};   //bianco
+
+/*
+Il motore di destra è il motore 1;
+quello di dietro è il motore 2;
+quello di sinistra è il motore 3.
+ */
+
+uint8_t pot  = 150;
+uint8_t N_Mot  = 3;
+
 void init_joints() {
 
   pinMode(pinA[0], OUTPUT);

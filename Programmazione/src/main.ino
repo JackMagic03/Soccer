@@ -4,7 +4,12 @@
  * De Martino, Giordano
  */
 
- #include "globals.h"
+#include "globals.h"
+
+Adafruit_BNO055 bno = Adafruit_BNO055(55);
+
+Pixy2 pixy;
+int NUM_BLOCKS = pixy.ccc.getBlocks();
 
 void setup() {
 
@@ -22,9 +27,9 @@ void setup() {
 
 void loop() {
 
-  read_compass();
+//  read_compass();
 
-  drive_Go(0, 200, read_imu);
+  //drive_Go(0, 200, read_imu);
 
   /*
   for(int i = 0; i<360; i++) {

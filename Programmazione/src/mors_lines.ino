@@ -1,20 +1,14 @@
 void lines_readLines() {
-  /**
-   * Bisogna creare una variabile agganciata ad un pin analogico
-   * che gestirà il ricevitore ad infrarossi.
-   * Organizzare un ritorno di dati utilizzabile per tutti e 5 i sensori:
-   * nella croce di sensori i sensori posteriori devono
-   * essere programmati in parallelo come unico sensore.
-   */
 
   #define sogliaLines 850 // Il valore potrebbe cambiare. L'ho creato a caso
 
   uint16_t analogReadLines[6];  // L'array che contiene i valori letti dai sensori
+  uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
 
   analogReadLines[0] = analogRead(pinLines[0]);
   analogReadLines[1] = analogRead(pinLines[1]);
 
-  /**
+  /*
    * Se questo, come anche gli altri valori, supera una certa soglia
    * bisogna correggere la direzione del robot.
    */

@@ -1,3 +1,6 @@
+#define scl_imu 21
+#define sda_imu 20
+
 void init_compass() {
 
   bno.begin(bno.OPERATION_MODE_IMUPLUS);
@@ -17,7 +20,7 @@ void read_compass() {
 
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
 
-  read_imu = euler.x();
+  int read_imu = euler.x();
 
 }
 
