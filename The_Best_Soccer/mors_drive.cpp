@@ -1,5 +1,4 @@
 #include "mors_drive.h"
-//#include "mors_params.h"
 
 #define angoloMot_0 60.0
 #define angoloMot_1 180.0
@@ -12,11 +11,11 @@
 PhoenixDrive* d;
 PhoenixDrive drive;
 
-static double drive_Matrix [NUM_JOINTS][NUM_JOINTS] =
+static double drive_Matrix [3][3] =
 {
   {0.87, 0.50, 1}, // -sin T1, cos T1, 1
   {0, -1, 1},      // -sin T2, cos T2, 1
-  {-0.87, 0.5, 1}  // -sin T3, cos T3, 1
+  {-0.87, 0.50, 1}  // -sin T3, cos T3, 1
 };
 
 // Convertire i Radianti in Gradi
@@ -38,22 +37,31 @@ void PhoenixDrive_init() {
 
 }
 
-void PhoenixDrive_setSpeed(int angolo, int velocita, int my_bussola) {
+void PhoenixDrive_setSpeed(int angolo, int vel, int my_bussola) {
 
-  d -> vx = velocita * sin(angolo); //Calcolo la vx
-  d -> vy = velocita * cos(angolo); //Calcolo la vy
+  d -> vx = vel * sin ( drive_radianti (angolo - 270) ); //Sarebbe 360 - angolo, ma così facendo
+  d -> vy = vel * cos ( drive_radianti (angolo - 270) ); //il robot va avanti a 0° e a sinistra a 90°
 
-  d -> Dw = d -> Rw * KW;  //Dw è il terzo termine della Matrice
+  //Portare la bussola da 0 - 360 a -180 - +180
+  if(my_bussola <= 180) d -> Rw = my_bussola;
+  else                  d -> Rw = my_bussola - 360;
+
+  d -> Dw = d -> Rw * KW; //Dw è il terzo termine della matrice, Wr è la velocità di rotazione e KW è una costante che va regolata
 
   if(d -> Dw > limiteDw_Up)   d -> Dw = limiteDw_Up;
   if(d -> Dw < limiteDw_Down) d -> Dw = limiteDw_Down;
 
-  d -> vel_motore_0 = drive_Matrix [0][0] * d -> vx + drive_Matrix [0][1] * d -> vy + drive_Matrix [0][2] * d -> Dw;
-  d -> vel_motore_1 = drive_Matrix [1][0] * d -> vx + drive_Matrix [1][1] * d -> vy + drive_Matrix [1][2] * d -> Dw;
-  d -> vel_motore_2 = drive_Matrix [2][0] * d -> vx + drive_Matrix [2][1] * d -> vy + drive_Matrix [2][2] * d -> Dw;
+  d -> vel_motore_0 = (drive_Matrix [0][0] * d -> vx) + (drive_Matrix [0][1] * d -> vy) + (drive_Matrix [0][2] * d -> Dw);
+  d -> vel_motore_1 = (drive_Matrix [1][0] * d -> vx) + (drive_Matrix [1][1] * d -> vy) + (drive_Matrix [1][2] * d -> Dw);
+  d -> vel_motore_2 = (drive_Matrix [2][0] * d -> vx) + (drive_Matrix [2][1] * d -> vy) + (drive_Matrix [2][2] * d -> Dw);
 
-  PhoenixJoints_setSpeed(0, d -> vel_motore_0);
-  PhoenixJoints_setSpeed(1, d -> vel_motore_1);
-  PhoenixJoints_setSpeed(2, d -> vel_motore_2);
+  /*
+  I calcoli per sapere le velocità e le direzioni dei singoli motori tramite le
+  moltiplicazioni "riga * colonna"
+  */
+
+  PhoenixJoints_setSpeed(1, d -> vel_motore_0);
+  PhoenixJoints_setSpeed(2, d -> vel_motore_1);
+  PhoenixJoints_setSpeed(3, d -> vel_motore_2);
 
 }

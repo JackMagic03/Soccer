@@ -1,33 +1,25 @@
 #include "mors_joints.h"
+#include "mors_params.h"
 
-PhoenixJoints joints[NUM_JOINTS] = {
+PhoenixJoints* j;
+
+PhoenixJoints joints[3] = {
   { //Joint 1
     pin_dirA  : 4,  //Filo Giallo
     pin_dirB  : 3,  //Filo Rosso
     pin_Pwm   : 2,  //Filo Bianco
-
-    direzione : 0,
-    velocita  : 0,
   },
   { //Joint 2
     pin_dirA  : 13,  //Filo Giallo
     pin_dirB  : 12,  //Filo Rosso
     pin_Pwm   : 11,  //Filo Bianco
-
-    direzione : 0,
-    velocita  : 0,
   },
   { //Joint 3
     pin_dirA  : 7,  //Filo Giallo
     pin_dirB  : 6,  //Filo Rosso
     pin_Pwm   : 5,  //Filo Bianco
-
-    direzione : 0,
-    velocita  : 0,
   }
 }; //Fine della struct
-
-PhoenixJoints* j;
 
 void PhoenixJoints_init() {
   pinMode(j -> pin_dirA, OUTPUT);
@@ -40,26 +32,45 @@ void PhoenixJoints_init() {
   digitalWrite(j -> pin_Pwm, LOW);
 }
 
-void PhoenixJoints_setSpeed(byte N_Mot, int velocita) {
+void PhoenixJoints_setSpeed(byte N_Mot, int vel) {
+  switch (N_Mot) {
+    case 1:
+      if(vel >= 0) {
+        digitalWrite(joints[0].pin_dirA, LOW);
+        digitalWrite(joints[0].pin_dirB, HIGH);
+        if(vel > 255) vel = 255;
+        analogWrite(joints[0].pin_Pwm, vel);
+      } else {
+        digitalWrite(joints[0].pin_dirA, HIGH);
+        digitalWrite(joints[0].pin_dirB, LOW);
+        if(vel < -255) vel = -255;
+        analogWrite(joints[0].pin_Pwm, -vel);
+      } break;
 
-  if (velocita >= 0)  {
-    j -> velocita = velocita;
-    j -> direzione = 0;
+    case 2:
+      if(vel >= 0) {
+        digitalWrite(joints[1].pin_dirA, LOW);
+        digitalWrite(joints[1].pin_dirB, HIGH);
+        if(vel > 255) vel = 255;
+        analogWrite(joints[1].pin_Pwm, vel);
+      } else {
+        digitalWrite(joints[1].pin_dirA, HIGH);
+        digitalWrite(joints[1].pin_dirB, LOW);
+        if(vel < -255) vel = -255;
+        analogWrite(joints[1].pin_Pwm, -vel);
+      } break;
 
-    digitalWrite(joints[N_Mot].pin_dirA, j -> direzione);
-    digitalWrite(joints[N_Mot].pin_dirB, !j -> direzione);
-    if(j -> velocita > 255) j -> velocita = 255;
-    analogWrite(joints[N_Mot].pin_Pwm, j -> velocita);
+    case 3:
+      if(vel >= 0) {
+        digitalWrite(joints[2].pin_dirA, LOW);
+        digitalWrite(joints[2].pin_dirB, HIGH);
+        if(vel > 255) vel = 255;
+        analogWrite(joints[2].pin_Pwm, vel);
+      } else {
+        digitalWrite(joints[2].pin_dirA, HIGH);
+        digitalWrite(joints[2].pin_dirB, LOW);
+        if(vel < -255) vel = -255;
+        analogWrite(joints[2].pin_Pwm, -vel);
+      } break;
   }
-
-  else {
-    j -> velocita = -velocita;
-    j -> direzione = 1;
-
-    digitalWrite(joints[N_Mot].pin_dirA, j -> direzione);
-    digitalWrite(joints[N_Mot].pin_dirB, !j -> direzione);
-    if(j -> velocita > 255) j -> velocita = 255;
-    analogWrite(joints[N_Mot].pin_Pwm, j -> velocita);
-  }
-
 }

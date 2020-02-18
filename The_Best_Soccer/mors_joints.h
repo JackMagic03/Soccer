@@ -9,13 +9,10 @@ typedef struct {
   uint8_t pin_dirB;
   uint8_t pin_Pwm;
 
-  uint8_t direzione;
-  uint16_t velocita;  //Arriva fino a 255, ma potrebbe essere maggiore dopo i calcoli
-
 } PhoenixJoints;
 
 extern PhoenixJoints* j;
-extern PhoenixJoints joints[NUM_JOINTS];
+extern PhoenixJoints joints[3];
 
 void PhoenixJoints_init();
 void PhoenixJoints_setSpeed(byte N_Mot, int velocita);

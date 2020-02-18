@@ -1,3 +1,3 @@
 #pragma once
-
-#define NUM_JOINTS 3
+#include <Arduino.h>
+#include "mors_joints.h"

@@ -1,7 +1,8 @@
 #include "mors_libras.h"
-#include "mors_compass.h"
 
 void setup()	{
+
+  Serial.begin(9600);
 
   PhoenixJoints_init();
 
