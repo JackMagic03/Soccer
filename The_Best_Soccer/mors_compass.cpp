@@ -1,5 +1,8 @@
 #include "mors_compass.h"
 
+int read_imu;
+Adafruit_BNO055 bno = Adafruit_BNO055(55);
+
 void PhoenixImu_init() {
 
   bno.begin(bno.OPERATION_MODE_IMUPLUS);

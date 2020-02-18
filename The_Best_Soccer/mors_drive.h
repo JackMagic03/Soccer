@@ -17,8 +17,8 @@ typedef struct {
 
 } PhoenixDrive;
 
-PhoenixDrive* d;
-PhoenixDrive drive;
+extern PhoenixDrive* d;
+extern PhoenixDrive drive;
 
 float drive_radianti(float gradi);
 float drive_gradi(float radianti);

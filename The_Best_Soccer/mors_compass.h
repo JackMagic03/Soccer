@@ -6,11 +6,11 @@
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
 
-#define scl_imu 21
-#define sda_imu 20
+//  #define scl_imu 21
+//  #define sda_imu 20
 
-int read_imu;
-Adafruit_BNO055 bno = Adafruit_BNO055(55);
+extern int read_imu;
+extern Adafruit_BNO055 bno;
 
 void PhoenixImu_init();
 void PhoenixImu_read();

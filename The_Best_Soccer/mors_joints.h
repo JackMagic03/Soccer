@@ -14,8 +14,7 @@ typedef struct {
 
 } PhoenixJoints;
 
-PhoenixJoints* j;
-
+extern PhoenixJoints* j;
 extern PhoenixJoints joints[NUM_JOINTS];
 
 void PhoenixJoints_init();

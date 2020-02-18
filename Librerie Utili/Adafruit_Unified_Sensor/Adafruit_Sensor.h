@@ -29,6 +29,8 @@
 #include "WProgram.h"
 #endif
 
+#pragma once
+
 /* Constants */
 #define SENSORS_GRAVITY_EARTH (9.80665F) /**< Earth's gravity in m/s^2 */
 #define SENSORS_GRAVITY_MOON (1.6F)      /**< The moon's gravity in m/s^2 */

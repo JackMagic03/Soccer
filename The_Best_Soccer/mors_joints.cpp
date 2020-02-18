@@ -27,6 +27,8 @@ PhoenixJoints joints[NUM_JOINTS] = {
   }
 }; //Fine della struct
 
+PhoenixJoints* j;
+
 void PhoenixJoints_init() {
   pinMode(j -> pin_dirA, OUTPUT);
   digitalWrite(j -> pin_dirA, LOW);

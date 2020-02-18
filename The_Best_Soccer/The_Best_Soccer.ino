@@ -1,4 +1,5 @@
 #include "mors_libras.h"
+#include "mors_compass.h"
 
 void setup()	{
 

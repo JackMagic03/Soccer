@@ -3,5 +3,4 @@
 #include <Arduino.h>
 #include "mors_joints.h"
 #include "mors_drive.h"
-#include "mors_compass.h"
 #include "mors_params.h"

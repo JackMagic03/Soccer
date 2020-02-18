@@ -9,6 +9,9 @@
 #define limiteDw_Down -70.0
 #define KW 3.0
 
+PhoenixDrive* d;
+PhoenixDrive drive;
+
 static double drive_Matrix [NUM_JOINTS][NUM_JOINTS] =
 {
   {0.87, 0.50, 1}, // -sin T1, cos T1, 1
