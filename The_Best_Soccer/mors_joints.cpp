@@ -1,27 +1,6 @@
 #include "mors_joints.h"
-#include "mors_params.h"
 
-PhoenixJoints* j;
-
-PhoenixJoints joints[3] = {
-  { //Joint 1
-    pin_dirA  : 4,  //Filo Giallo
-    pin_dirB  : 3,  //Filo Rosso
-    pin_Pwm   : 2,  //Filo Bianco
-  },
-  { //Joint 2
-    pin_dirA  : 13,  //Filo Giallo
-    pin_dirB  : 12,  //Filo Rosso
-    pin_Pwm   : 11,  //Filo Bianco
-  },
-  { //Joint 3
-    pin_dirA  : 7,  //Filo Giallo
-    pin_dirB  : 6,  //Filo Rosso
-    pin_Pwm   : 5,  //Filo Bianco
-  }
-}; //Fine della struct
-
-void PhoenixJoints_init() {
+void PhoenixJoints_init(PhoenixJoints* j) {
   pinMode(j -> pin_dirA, OUTPUT);
   digitalWrite(j -> pin_dirA, LOW);
 
@@ -32,8 +11,24 @@ void PhoenixJoints_init() {
   digitalWrite(j -> pin_Pwm, LOW);
 }
 
-void PhoenixJoints_setSpeed(byte N_Mot, int vel) {
-  switch (N_Mot) {
+void PhoenixJoints_setSpeed(PhoenixJoints* j, int vel) {
+
+  if(vel >= 0) {
+    j -> velocita = vel;
+    j -> direzione = 0;
+  } else {
+    j -> velocita = -vel;
+    j -> direzione = 1;
+  }
+
+  if(j -> velocita > 255) j -> velocita = 255;
+
+  if(j -> velocita < 50) j -> velocita = 0;
+
+  digitalWrite(j -> pin_dirA, j -> direzione);
+  digitalWrite(j -> pin_dirB, !j -> direzione);
+  analogWrite(j -> pin_Pwm, j -> velocita);
+  /*switch (N_Mot) {
     case 1:
       if(vel >= 0) {
         digitalWrite(joints[0].pin_dirA, LOW);
@@ -72,5 +67,5 @@ void PhoenixJoints_setSpeed(byte N_Mot, int vel) {
         if(vel < -255) vel = -255;
         analogWrite(joints[2].pin_Pwm, -vel);
       } break;
-  }
+  }*/
 }

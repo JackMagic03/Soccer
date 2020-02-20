@@ -6,9 +6,9 @@
 
 typedef struct {
 
-  float vel_motore_0;
-  float vel_motore_1;
-  float vel_motore_2; //Le 3 velocità dei motori
+  PhoenixJoints* joints;
+
+  float vel_motore0, vel_motore1, vel_motore2;
 
   float vx;            //Componente velocità del'asse X
   float vy;            //Componente velocità dell'asse Y
@@ -17,10 +17,7 @@ typedef struct {
 
 } PhoenixDrive;
 
-extern PhoenixDrive* d;
-extern PhoenixDrive drive;
-
 float drive_radianti(float gradi);
 float drive_gradi(float radianti);
-void PhoenixDrive_init();
-void PhoenixDrive_setSpeed(int angolo, int velocita, int my_bussola);
+void PhoenixDrive_init(PhoenixDrive* d);
+void PhoenixDrive_setSpeed(PhoenixDrive* d, int angolo, int velocita, int my_bussola);
