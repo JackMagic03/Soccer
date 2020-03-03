@@ -1,62 +1,40 @@
-void lines_readLines() {
+void test_lines() {
 
-  #define sogliaLines 850 // Il valore potrebbe cambiare. L'ho creato a caso
+  for(int i = 0; i < 6; i++) {
 
-  uint16_t analogReadLines[6];  // L'array che contiene i valori letti dai sensori
-  uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
-
-  analogReadLines[0] = analogRead(pinLines[0]);
-  analogReadLines[1] = analogRead(pinLines[1]);
-
-  /*
-   * Se questo, come anche gli altri valori, supera una certa soglia
-   * bisogna correggere la direzione del robot.
-   */
-
-  if(( analogReadLines[0] || analogReadLines[1] ) >= sogliaLines) {
-
-    /*
-    I sensori anteriori del robot
-     */
-
-  } else {
+    analogReadLines[i] = analogRead(pinLines[i]);
+    Serial.print("Leggo il pin ");
+    Serial.print(i);
+    Serial.print("   ");
+    Serial.println(analogReadLines[i]);
+    delay(50);
 
   }
 
-  analogReadLines[2] = analogRead(pinLines[2]);
+}
 
-  if(analogReadLines[2] >= sogliaLines) {
+void read_lines() {
 
-    /*
-    I sensori di destra del robot
-     */
+  uint8_t flg_lines;
 
-  } else {
+  for(int i = 0; i < 6; i++) {
 
-  }
-
-  analogReadLines[3] = analogRead(pinLines[3]);
-  analogReadLines[4] = analogRead(pinLines[4]);
-
-  if(( analogReadLines[3] || analogReadLines[4] ) >= sogliaLines) {
-
-    /*
-    I sensori posteriori del robot
-     */
-
-  } else {
+    analogReadLines[i] = analogRead(pinLines[i]);
+    if(analogReadLines[i] >= sogliaBianco) flg_lines = 1;
 
   }
 
-  analogReadLines[5] = analogRead(pinLines[5]);
+  if(flg_lines == 1) {
 
-  if(analogReadLines[5] >= sogliaLines) {
+    unsigned long time_lines = millis();
+    while((millis() - time_lines) <= 200) Serial.println("Sto FERMOOO");
 
-    /*
-    I sensori di sinistra del robot
-     */
+    time_lines = millis();
+    while((millis() - time_lines) <= 500) Serial.println("Torno in Campo");
 
   } else {
+
+    //Qualcosa
 
   }
 

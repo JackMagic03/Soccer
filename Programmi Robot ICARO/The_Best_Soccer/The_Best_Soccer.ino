@@ -3,10 +3,6 @@
 #include "mors_drive.h"
 #include "mors_params.h"
 #include "mors_compass.h"
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
-#include <utility/imumaths.h>
 
 void setup()	{
 

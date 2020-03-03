@@ -1,8 +1,6 @@
 /*
 Libreria gestione rotazione e velocità dei singoli motori
- */
 
-/*
 Matrici per il controllo olonomico dei motori con lo 0° davanti;
 Usiamo la stessa logica della bussola Bno055
  */
@@ -60,12 +58,6 @@ void drive_Go( int angolo, int velocita, int my_bussola) {
   I calcoli per sapere le velocità e le direzioni dei singoli motori tramite le
   moltiplicazioni "riga * colonna"
   */
-
-  Serial.print(vel_1);
-  Serial.print(" -- ");
-  Serial.print(vel_2);
-  Serial.print(" -- ");
-  Serial.println(vel_3);
 
   joints(0, vel_1);
   joints(1, vel_2);

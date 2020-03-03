@@ -37,6 +37,11 @@ uint16_t velocita;
 int read_imu;
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
+uint16_t analogReadLines[6] {0}  // L'array che contiene i valori letti dai sensori
+uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
+int sogliaVerde;
+int sogliaBianco;
+
 //Pixy2 pixy;
 //int NUM_BLOCKS = pixy.ccc.getBlocks();
 
@@ -50,7 +55,7 @@ void setup() {
 
   drive_init();
 
-  //  pixy.init();
+  //pixy.init();
 
 }
 
@@ -58,14 +63,13 @@ void loop() {
 
   read_compass();
 
-  drive_Go(0,200,read_imu);
+  drive_Go(0, 0, read_imu);
 
-/*  for(int i = 0; i<360; i++) {
-
-      drive_Go(i, 200, read_imu);
-      delay(5);
-
-    }
+/*
+for(int i = 0; i<360; i++) {
+  drive_Go(i, 200, read_imu);
+  delay(5);
+}
 */
 
 }
