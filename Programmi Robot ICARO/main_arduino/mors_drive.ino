@@ -1,9 +1,9 @@
-/*
-Libreria gestione rotazione e velocità dei singoli motori
-
-Matrici per il controllo olonomico dei motori con lo 0° davanti;
-Usiamo la stessa logica della bussola Bno055
+/**
+ * Libreria gestione Motori => 0° davanti
+ *
+ * Massimo Giordano, Diego de Martino
  */
+
 static double drive_Matrix [NUM_JOINTS][NUM_JOINTS] =
 {
   {0.87, 0.50, 1}, //sin T1, cos T1, 1

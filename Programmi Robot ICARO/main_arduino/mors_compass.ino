@@ -1,3 +1,9 @@
+/**
+ * Libreria gestione bussola
+ * 
+ * Massimo Giordano, Diego de Martino
+ */
+
 void init_compass() {
 
   bno.begin(bno.OPERATION_MODE_IMUPLUS);

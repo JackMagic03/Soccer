@@ -1,3 +1,9 @@
+/**
+ * Libreria gestione Motori
+ * 
+ * Massimo Giordano, Diego de Martino
+ */
+
 void init_joints() {
   pinMode(pinA[0], OUTPUT);
   pinMode(pinA[1], OUTPUT);
@@ -22,7 +28,7 @@ void joints (byte N_Mot, int val) {
     digitalWrite(pinB[N_Mot], LOW);
     if(val < -255) val = -255;
     analogWrite(pinPwm[N_Mot], -val);
-    }
+  }
 
 // switch (N_Mot) {
 //   case 1:

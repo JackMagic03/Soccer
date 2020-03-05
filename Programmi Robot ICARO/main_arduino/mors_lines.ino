@@ -1,3 +1,12 @@
+/**
+ * Libreria gestione sensori di linea
+ * 
+ * Massimo Giordano, Diego de Martino
+ */
+
+int sogliaVerde;
+int sogliaBianco;
+
 void test_lines() {
 
   for(int i = 0; i < 6; i++) {
@@ -10,7 +19,6 @@ void test_lines() {
     delay(50);
 
   }
-
 }
 
 void read_lines() {
@@ -37,5 +45,4 @@ void read_lines() {
     //Qualcosa
 
   }
-
 }
