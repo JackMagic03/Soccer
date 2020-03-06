@@ -6,26 +6,28 @@
 
 void pixy_readBlocks() {
 
-  if(pixy.ccc.numBlocks) {
+  GET_BLOCKS;
 
-      Serial.println(pixy.ccc.numBlocks);
-      Serial.println(" --- ");
-      for(int i=0;i<NUM_BLOCKS;i++){
+  if(NUM_BLOCKS) {
+
+    Serial.println(NUM_BLOCKS);
+    Serial.println(" --- ");
+
+    for(int i=0; i<TOT_BLOCKS; i++){
       pixy.ccc.blocks[i].print();
-
     }
   }
 }
 
-void pixy_GoBall() {
+void pixy_goBall() {
 
   if(NUM_BLOCKS) {
 
-    for(int i=0;i<NUM_BLOCKS;i++) {
+    for(int i=0; i<TOT_BLOCKS; i++) {
 
-      int angolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
-      Serial.println(angolo);
-      drive_Go(angolo, 200, read_imu);
+      int pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
+      Serial.println(pixyAngolo);
+      drive_Go(pixyAngolo, 200, read_imu);
 
     }
   }

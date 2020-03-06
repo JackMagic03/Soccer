@@ -1,6 +1,6 @@
 /**
  * Libreria gestione sensori di linea
- * 
+ *
  * Massimo Giordano, Diego de Martino
  */
 
