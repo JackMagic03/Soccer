@@ -25,7 +25,7 @@ float drive_radianti(float gradi) { return ( gradi * PI / 180.0 ); }  //PI è un
 float drive_gradi(float radianti) { return ( radianti * 180.0 / PI ); }
 
 //Inizializzare la Matrice di valori
-void drive_init() {
+void PhoenixDrive_init() {
   vx = 0;
   vy = 0;
   Rw = 0;
@@ -36,7 +36,7 @@ void drive_init() {
 }
 
 //Funzione che gestisce tutte le direzioni dei motori
-void drive_Go( int angolo, int velocita, int my_bussola) {
+void PhoenixDrive_setSpeed( int angolo, int velocita, int my_bussola) {
 
   vx = velocita * sin ( drive_radianti (angolo - 270) ); //Sarebbe 360 - angolo, ma così facendo
   vy = velocita * cos ( drive_radianti (angolo - 270) ); //il robot va avanti a 0° e a sinistra a 90°
@@ -59,9 +59,9 @@ void drive_Go( int angolo, int velocita, int my_bussola) {
   moltiplicazioni "riga * colonna"
   */
 
-  joints(0, vel_1);
-  joints(1, vel_2);
-  joints(2, vel_3);
+  PhoenixJoints_setSpeed(0, vel_1);
+  PhoenixJoints_setSpeed(1, vel_2);
+  PhoenixJoints_setSpeed(2, vel_3);
 
 }
 
@@ -74,13 +74,13 @@ void drive_stop() {   //Il robot "Inchioda"
 }
 
 void drive_fermo() {  //Il robot rallenta velocemente
-  joints(0, 0);
-  joints(1, 0);
-  joints(2, 0);
+  PhoenixJoints_setSpeed(0, 0);
+  PhoenixJoints_setSpeed(1, 0);
+  PhoenixJoints_setSpeed(2, 0);
 }
 
 void drive_spin(int val) {  //Il robot ruota su se stesso
-  joints(0, val);
-  joints(1, val);
-  joints(2, val);
+  PhoenixJoints_setSpeed(0, val);
+  PhoenixJoints_setSpeed(1, val);
+  PhoenixJoints_setSpeed(2, val);
 }

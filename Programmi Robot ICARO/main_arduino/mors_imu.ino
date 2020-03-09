@@ -4,7 +4,7 @@
  * Massimo Giordano, Diego de Martino
  */
 
-void init_compass() {
+void PhoenixImu_init() {
 
   bno.begin(bno.OPERATION_MODE_IMUPLUS);
 
@@ -19,7 +19,7 @@ void init_compass() {
 
 }
 
-int read_compass() {
+int PhoenixImu_read() {
 
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
   int read_imu = euler.x();
@@ -27,7 +27,7 @@ int read_compass() {
 
 }
 
-void test_compass() {
+void PhoenixImu_test() {
 
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
 

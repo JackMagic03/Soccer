@@ -36,11 +36,11 @@ void setup() {
 
   Serial.begin(9600);
 
-  init_joints();
+  PhoenixJoints_init();
 
-  init_compass();
+  PhoenixImu_init();
 
-  drive_init();
+  PhoenixDrive_init();
 
   pixy.init();
 
@@ -48,9 +48,9 @@ void setup() {
 
 void loop() {
 
-  int read_imu = read_compass();
+  int read_imu = PhoenixImu_read();
 
-  drive_Go(0, 0, read_imu);
+  PhoenixDrive_setSpeed(0, 0, read_imu);
 
 /*
 for(int i = 0; i<360; i++) {

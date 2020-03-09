@@ -1,10 +1,10 @@
 /**
  * Libreria gestione Motori
- * 
+ *
  * Massimo Giordano, Diego de Martino
  */
 
-void init_joints() {
+void PhoenixJoints_init() {
   pinMode(pinA[0], OUTPUT);
   pinMode(pinA[1], OUTPUT);
   pinMode(pinA[2], OUTPUT);
@@ -16,7 +16,7 @@ void init_joints() {
   pinMode(pinPwm[2], OUTPUT);
 }
 
-void joints (byte N_Mot, int val) {
+void PhoenixJoints_setSpeed (byte N_Mot, int val) {
 
   if(val >= 0) {
     digitalWrite(pinA[N_Mot], LOW);

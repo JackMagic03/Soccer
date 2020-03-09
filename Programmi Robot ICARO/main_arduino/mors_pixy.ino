@@ -7,7 +7,6 @@
 void pixy_test() {
 
   uint8_t GET_BLOCKS = pixy.ccc.getBlocks();
-
   uint8_t NUM_BLOCKS = pixy.ccc.numBlocks;
 
   if(NUM_BLOCKS) {
@@ -25,7 +24,7 @@ void pixy_goBall() {
 
   uint8_t GET_BLOCKS = pixy.ccc.getBlocks();
   uint8_t NUM_BLOCKS = pixy.ccc.numBlocks;
-  int read_imu = read_compass();
+  int read_imu = PhoenixImu_read();
 
 /**
  * Per la palla devo usare "uint16_t m_signature"
@@ -39,7 +38,7 @@ void pixy_goBall() {
 
       int pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
       Serial.println(pixyAngolo);
-      drive_Go(pixyAngolo, 200, read_imu);
+      PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
 
     }
   }
