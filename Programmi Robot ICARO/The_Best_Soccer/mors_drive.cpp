@@ -35,16 +35,16 @@ void PhoenixDrive_init(PhoenixDrive* d) {
 
 }
 
-void PhoenixDrive_setSpeed(PhoenixDrive* d, int angolo, int vel, int my_bussola) {
+void PhoenixDrive_setSpeed(PhoenixDrive* d, int angolo, int vel/*, int my_bussola*/) {
 
   d -> vx = vel * sin ( drive_radianti (angolo - 270) ); //Sarebbe 360 - angolo, ma così facendo
   d -> vy = vel * cos ( drive_radianti (angolo - 270) ); //il robot va avanti a 0° e a sinistra a 90°
 
   //Portare la bussola da 0 - 360 a -180 - +180
-  if(my_bussola <= 180) d -> Rw = my_bussola;
-  else                  d -> Rw = my_bussola - 360;
+  // if(my_bussola <= 180) d -> Rw = my_bussola;
+  // else                  d -> Rw = my_bussola - 360;
 
-  d -> Dw = d -> Rw * KW; //Dw è il terzo termine della matrice, Wr è la velocità di rotazione e KW è una costante che va regolata
+  d -> Dw = 0;  //d -> Rw * KW; //Dw è il terzo termine della matrice, Wr è la velocità di rotazione e KW è una costante che va regolata
 
   if(d -> Dw > limiteDw_Up)   d -> Dw = limiteDw_Up;
   if(d -> Dw < limiteDw_Down) d -> Dw = limiteDw_Down;

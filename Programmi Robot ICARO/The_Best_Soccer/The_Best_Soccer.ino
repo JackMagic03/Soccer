@@ -1,8 +1,8 @@
+#include <Arduino.h>
 #include "mors_globals.h"
 #include "mors_joints.h"
 #include "mors_drive.h"
 #include "mors_params.h"
-#include "mors_compass.h"
 
 void setup()	{
 
@@ -14,14 +14,13 @@ void setup()	{
 
   PhoenixDrive_init(&drive);
 
-  PhoenixImu_init();
-
 }
 
 void loop()	{
 
-  PhoenixImu_read();
-
-  PhoenixDrive_setSpeed(&drive, 0, 200, read_imu);
+  for(int i = 0; i < 360; i++) {
+    PhoenixDrive_setSpeed(&drive, i, 200);
+    delay(5);
+  }
 
 }

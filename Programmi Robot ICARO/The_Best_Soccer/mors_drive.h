@@ -20,4 +20,4 @@ typedef struct {
 float drive_radianti(float gradi);
 float drive_gradi(float radianti);
 void PhoenixDrive_init(PhoenixDrive* d);
-void PhoenixDrive_setSpeed(PhoenixDrive* d, int angolo, int velocita, int my_bussola);
+void PhoenixDrive_setSpeed(PhoenixDrive* d, int angolo, int velocita/*, int my_bussola*/);

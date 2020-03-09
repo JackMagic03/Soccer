@@ -24,16 +24,13 @@ uint8_t pinPwm[NUM_JOINTS] = {2, 11, 5};   //bianco
 
 #define scl_imu 21
 #define sda_imu 20
-int read_imu;
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
 uint16_t analogReadLines[6] {0};  // L'array che contiene i valori letti dai sensori
 uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
 
 Pixy2 pixy;
-int NUM_BLOCKS = pixy.ccc.numBlocks;
-int GET_BLOCKS = pixy.ccc.getBlocks();
-int TOT_BLOCKS = 3;   //Il totale dei clocchi che la pixy ha memorizzati
+#define TOT_BLOCKS = 3;   //Il totale dei clocchi che la pixy ha memorizzati
 
 void setup() {
 
@@ -51,7 +48,7 @@ void setup() {
 
 void loop() {
 
-  read_compass();
+  int read_imu = read_compass();
 
   drive_Go(0, 0, read_imu);
 

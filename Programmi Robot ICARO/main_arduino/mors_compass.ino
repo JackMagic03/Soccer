@@ -1,6 +1,6 @@
 /**
  * Libreria gestione bussola
- * 
+ *
  * Massimo Giordano, Diego de Martino
  */
 
@@ -19,10 +19,11 @@ void init_compass() {
 
 }
 
-void read_compass() {
+int read_compass() {
 
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
-  read_imu = euler.x();
+  int read_imu = euler.x();
+  return read_imu;
 
 }
 
