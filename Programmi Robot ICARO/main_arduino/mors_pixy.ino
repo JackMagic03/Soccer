@@ -36,7 +36,7 @@ void pixy_goBall() {
 
     for(int i=0; i<NUM_BLOCKS; i++) {
 
-      if (pixy.ccc.blocks[i].m_signature == 0)      Serial.println("Hai trovato la Pallaaaaaa");
+      if      (pixy.ccc.blocks[i].m_signature == 0) Serial.println("Hai trovato la Pallaaaaaa");
       else if (pixy.ccc.blocks[i].m_signature == 1) Serial.println("Hai trovato la Porta Gialla");
       else if (pixy.ccc.blocks[i].m_signature == 2) Serial.println("Hai trovato la Porta Blu");
 
