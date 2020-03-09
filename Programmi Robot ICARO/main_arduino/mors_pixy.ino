@@ -36,10 +36,25 @@ void pixy_goBall() {
 
     for(int i=0; i<NUM_BLOCKS; i++) {
 
-      int pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
-      Serial.println(pixyAngolo);
-      PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
+      if (pixy.ccc.blocks[i].m_signature == 0)      Serial.println("Hai trovato la Pallaaaaaa");
+      else if (pixy.ccc.blocks[i].m_signature == 1) Serial.println("Hai trovato la Porta Gialla");
+      else if (pixy.ccc.blocks[i].m_signature == 2) Serial.println("Hai trovato la Porta Blu");
 
+      /*
+       *switch (pixy.ccc.blocks[i].m_signature) {
+          case 0:
+            Serial.println("Palla");
+            int pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
+            PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
+            break;
+          case 1:
+            Serial.println("Porta Gialla");
+            break;
+          case 2:
+            Serial.println("Porta Blu");
+            break;
+        }
+       */
     }
   }
 }

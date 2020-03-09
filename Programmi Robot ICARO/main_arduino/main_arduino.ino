@@ -26,7 +26,6 @@ uint8_t pinPwm[NUM_JOINTS] = {2, 11, 5};   //bianco
 #define sda_imu 20
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
-uint16_t analogReadLines[6] {0};  // L'array che contiene i valori letti dai sensori
 uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
 
 Pixy2 pixy;

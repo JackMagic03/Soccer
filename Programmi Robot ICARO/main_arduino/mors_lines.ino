@@ -6,6 +6,7 @@
 
 int sogliaVerde;
 int sogliaBianco;
+uint16_t analogReadLines[6] {0};  // L'array che contiene i valori letti dai sensori
 
 void test_lines() {
 
