@@ -22,28 +22,47 @@ void test_lines() {
   }
 }
 
-void read_lines() {
+int read_lines() {
 
   uint8_t flg_lines;
 
   for(int i = 0; i < 6; i++) {
 
     analogReadLines[i] = analogRead(pinLines[i]);
-    if(analogReadLines[i] >= sogliaBianco) flg_lines = 1;
 
+    if(analogReadLines[i] >= sogliaBianco) {
+      flg_lines = 1;
+      return flg_lines;
+    }
   }
+  return 0;
+}
+
+void test_flgLines(uint8_t flg_lines, unsigned long time_lines) {
 
   if(flg_lines == 1) {
 
-    unsigned long time_lines = millis();
-    while((millis() - time_lines) <= 200) Serial.println("Sto FERMOOO");
+    unsigned long current_millis = millis();
 
-    time_lines = millis();
-    while((millis() - time_lines) <= 500) Serial.println("Torno in Campo");
+    if(current_millis - time_lines <= 200) {
+
+      Serial.println("Sto FERMOOO");
+
+    } else if((current_millis - time_lines > 200) && (current_millis - time_lines <= 500)) {
+
+      Serial.println("Torno in Campo");
+
+    } else {
+
+      flg_lines = 0;
+
+    }
 
   } else {
-
     //Qualcosa
-
   }
+}
+
+int get_lines(int param) {
+  return analogReadLines[param];
 }

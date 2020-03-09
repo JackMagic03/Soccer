@@ -53,7 +53,17 @@ void setup() {
 
 void loop() {
 
+  static uint8_t old_flgLines = 0;
+  static unsigned long time_lines = 0;
+  uint8_t flg_lines = read_lines();
+
+  if(old_flgLines != flg_lines && flg_lines == 1) {
+    time_lines = millis();
+  }
+
   int read_imu = PhoenixImu_read();
+
+  test_flgLines(flg_lines, time_lines);
 
   pixy_goBall();
 
@@ -63,5 +73,5 @@ void loop() {
     delay(5);
   }
   */
-
+  old_flgLines = flg_lines;
 }

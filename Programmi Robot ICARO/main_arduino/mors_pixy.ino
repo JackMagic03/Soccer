@@ -38,7 +38,7 @@ void pixy_goBall() {
       switch (pixy.ccc.blocks[i].m_signature) {
         case 0:
           Serial.println("Palla");
-          int pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
+          float pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
           PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
           break;
         case 1:

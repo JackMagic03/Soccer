@@ -36,10 +36,10 @@ void PhoenixDrive_init() {
 }
 
 //Funzione che gestisce tutte le direzioni dei motori
-void PhoenixDrive_setSpeed( int angolo, int velocita, int my_bussola) {
+void PhoenixDrive_setSpeed(float angolo, int velocita, int my_bussola) {
 
-  vx = velocita * sin ( drive_radianti (angolo - 270) ); //Sarebbe 360 - angolo, ma così facendo
-  vy = velocita * cos ( drive_radianti (angolo - 270) ); //il robot va avanti a 0° e a sinistra a 90°
+  vx = velocita * sin(angolo); //drive_radianti (angolo - 270) ); //Sarebbe 360 - angolo, ma così facendo
+  vy = velocita * cos(angolo); //drive_radianti (angolo - 270) ); //il robot va avanti a 0° e a sinistra a 90°
 
   //Portare la bussola da 0 - 360 a -180 - +180
   if(my_bussola <= 180) Rw = my_bussola;
