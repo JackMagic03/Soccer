@@ -28,7 +28,6 @@ void pixy_goBall() {
 
 /**
  * Per la palla devo usare "uint16_t m_signature"
- *
  * Mi da il numero identificativo del blocco riconosciuto
  */
 
@@ -36,25 +35,22 @@ void pixy_goBall() {
 
     for(int i=0; i<NUM_BLOCKS; i++) {
 
-      if      (pixy.ccc.blocks[i].m_signature == 0) Serial.println("Hai trovato la Pallaaaaaa");
-      else if (pixy.ccc.blocks[i].m_signature == 1) Serial.println("Hai trovato la Porta Gialla");
-      else if (pixy.ccc.blocks[i].m_signature == 2) Serial.println("Hai trovato la Porta Blu");
-
-      /*
-       *switch (pixy.ccc.blocks[i].m_signature) {
-          case 0:
-            Serial.println("Palla");
-            int pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
-            PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
-            break;
-          case 1:
-            Serial.println("Porta Gialla");
-            break;
-          case 2:
-            Serial.println("Porta Blu");
-            break;
-        }
-       */
+      switch (pixy.ccc.blocks[i].m_signature) {
+        case 0:
+          Serial.println("Palla");
+          int pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
+          PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
+          break;
+        case 1:
+          Serial.println("Porta Gialla");
+          break;
+        case 2:
+          Serial.println("Porta Blu");
+          break;
+      }
+      // if      (pixy.ccc.blocks[i].m_signature == 0) Serial.println("Hai trovato la Palla");
+      // else if (pixy.ccc.blocks[i].m_signature == 1) Serial.println("Hai trovato la Porta Gialla");
+      // else if (pixy.ccc.blocks[i].m_signature == 2) Serial.println("Hai trovato la Porta Blu");
     }
   }
 }

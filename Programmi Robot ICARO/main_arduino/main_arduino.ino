@@ -30,6 +30,12 @@ uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sen
 
 Pixy2 pixy;
 #define TOT_BLOCKS = 3;   //Il totale dei clocchi che la pixy ha memorizzati
+/**
+ * I Blocchi che la pixy legge sono:
+   *  Palla(Blocco 0);
+   *  Porta Gialla(Blocco 1);
+   *  Porta Blu(Blocco 2);
+ */
 
 void setup() {
 
@@ -49,13 +55,13 @@ void loop() {
 
   int read_imu = PhoenixImu_read();
 
-  PhoenixDrive_setSpeed(0, 0, read_imu);
+  pixy_goBall();
 
-/*
-for(int i = 0; i<360; i++) {
-  drive_Go(i, 200, read_imu);
-  delay(5);
-}
-*/
+  /*
+  for(int i = 0; i<360; i++) {
+    drive_Go(i, 200, read_imu);
+    delay(5);
+  }
+  */
 
 }
