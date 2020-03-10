@@ -4,7 +4,6 @@
  * Massimo Giordano, Diego de Martino
  */
 
-int sogliaVerde;
 int sogliaBianco;
 uint16_t analogReadLines[6] {0};  // L'array che contiene i valori letti dai sensori
 
@@ -24,21 +23,28 @@ void test_lines() {
 
 int read_lines() {
 
-  uint8_t flg_lines;
+  uint8_t flg_lines = 0;
 
   for(int i = 0; i < 6; i++) {
 
     analogReadLines[i] = analogRead(pinLines[i]);
 
     if(analogReadLines[i] >= sogliaBianco) {
-      flg_lines = 1;
-      return flg_lines;
+
+        flg_lines = 1;    //Stiamo trovando un colore molto chiaro
+        return flg_lines; //Impostiamo 1 come valore del bianco
+
+    } else {
+
     }
   }
-  return 0;
+  flg_lines = 0;
+  return flg_lines;
 }
 
-void test_flgLines(uint8_t flg_lines, unsigned long time_lines) {
+int test_flgLines(uint8_t flg_lines, unsigned long time_lines) {
+
+  uint8_t flg_linesCtr = 0;
 
   if(flg_lines == 1) {
 
@@ -46,21 +52,35 @@ void test_flgLines(uint8_t flg_lines, unsigned long time_lines) {
 
     if(current_millis - time_lines <= 200) {
 
-      Serial.println("Sto FERMOOO");
+      flg_linesCtr = 1;
+      return flg_linesCtr;
 
     } else if((current_millis - time_lines > 200) && (current_millis - time_lines <= 500)) {
 
-      Serial.println("Torno in Campo");
+      flg_linesCtr = 2;
+      return flg_linesCtr;
 
     } else {
-
       flg_lines = 0;
-
+      flg_linesCtr = 0;
+      return flg_linesCtr;
     }
 
   } else {
     //Qualcosa
   }
+}
+
+void linesGo_flg(uint8_t flg_linesCtr) {
+
+  if(flg_linesCtr == 1) {
+    drive_stop();
+  } else if(flg_linesCtr == 2) {
+    //Torno in campo nn so come
+  } else {
+
+  }
+
 }
 
 int get_lines(int param) {

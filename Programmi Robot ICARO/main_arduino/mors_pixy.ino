@@ -4,10 +4,14 @@
  * Massimo Giordano, Diego de Martino
  */
 
+uint8_t GET_BLOCKS;
+uint8_t NUM_BLOCKS;
+uint8_t TOT_BLOCKS = 3;
+
 void pixy_test() {
 
-  uint8_t GET_BLOCKS = pixy.ccc.getBlocks();
-  uint8_t NUM_BLOCKS = pixy.ccc.numBlocks;
+  GET_BLOCKS = pixy.ccc.getBlocks();
+  NUM_BLOCKS = pixy.ccc.numBlocks;
 
   if(NUM_BLOCKS) {
 
@@ -20,37 +24,75 @@ void pixy_test() {
   }
 }
 
-void pixy_goBall() {
+int read_pixy() {
 
-  uint8_t GET_BLOCKS = pixy.ccc.getBlocks();
-  uint8_t NUM_BLOCKS = pixy.ccc.numBlocks;
-  int read_imu = PhoenixImu_read();
+  uint8_t flg_pixy = 0;
 
-/**
- * Per la palla devo usare "uint16_t m_signature"
- * Mi da il numero identificativo del blocco riconosciuto
- */
+  GET_BLOCKS = pixy.ccc.getBlocks();
+  NUM_BLOCKS = pixy.ccc.numBlocks;
 
   if(NUM_BLOCKS) {
 
-    for(int i=0; i<NUM_BLOCKS; i++) {
+    flg_pixy = 1;
+    return flg_pixy;
+
+  } else {
+
+    flg_pixy = 0;
+    return flg_pixy;
+
+  }
+}
+
+void test_flgPixy(uint8_t flg_pixy, int read_imu) {
+
+  //uint8_t flg_pixyCtr = 0;
+
+  if(flg_pixy) {
+
+    for(int i=0; i<TOT_BLOCKS; i++) {
 
       switch (pixy.ccc.blocks[i].m_signature) {
-        case 0:
+        case 0: //Palla
+
           Serial.println("Palla");
           float pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
           PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
+          // flg_pixyCtr = 1;
+          // return flg_pixyCtr;
           break;
-        case 1:
+        case 1: //Porta Gialla
+
           Serial.println("Porta Gialla");
+          // flg_pixyCtr = 2;
+          // return flg_pixyCtr;
           break;
-        case 2:
+        case 2: //Porta Blu
+
           Serial.println("Porta Blu");
+          // flg_pixyCtr = 3;
+          // return flg_pixyCtr;
           break;
       }
-      // if      (pixy.ccc.blocks[i].m_signature == 0) Serial.println("Hai trovato la Palla");
-      // else if (pixy.ccc.blocks[i].m_signature == 1) Serial.println("Hai trovato la Porta Gialla");
-      // else if (pixy.ccc.blocks[i].m_signature == 2) Serial.println("Hai trovato la Porta Blu");
     }
+  } else {
+
   }
 }
+
+// void pixyGo_flg(uint8_t flg_pixyCtr, int read_imu) {
+//
+//   switch (flg_pixyCtr) {
+//     case 1:
+//       Serial.println("Palla");
+//       float pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
+//       PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
+//     break;
+//     case 2:
+//       Serial.println("Porta Gialla");
+//     break;
+//     case 3:
+//       Serial.println("Porta Blu");
+//     break;
+//   }
+// }

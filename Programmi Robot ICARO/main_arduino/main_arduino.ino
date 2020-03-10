@@ -29,7 +29,6 @@ Adafruit_BNO055 bno = Adafruit_BNO055(55);
 uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
 
 Pixy2 pixy;
-#define TOT_BLOCKS = 3;   //Il totale dei clocchi che la pixy ha memorizzati
 /**
  * I Blocchi che la pixy legge sono:
    *  Palla(Blocco 0);
@@ -55,23 +54,33 @@ void loop() {
 
   static uint8_t old_flgLines = 0;
   static unsigned long time_lines = 0;
-  uint8_t flg_lines = read_lines();
 
+  uint8_t flg_lines = read_lines();
   if(old_flgLines != flg_lines && flg_lines == 1) {
     time_lines = millis();
   }
 
-  int read_imu = PhoenixImu_read();
+  uint8_t flg_pixy = read_pixy();
 
-  test_flgLines(flg_lines, time_lines);
+  int read_imu = imu_read();
 
-  pixy_goBall();
+  uint8_t flg_linesCtr = test_flgLines(flg_lines, time_lines);
+
+  //uint8_t flg_pixyCtr = test_flgPixy(flg_pixy);
+  test_flgPixy(flg_pixy, read_imu);
+
+  linesGo_flg(flg_linesCtr);
+
+  //pixyGo_flg(flg_pixyCtr, read_imu);
 
   /*
   for(int i = 0; i<360; i++) {
-    drive_Go(i, 200, read_imu);
+    PhoenixDrive_setSpeed(i, 200, read_imu);
     delay(5);
   }
   */
   old_flgLines = flg_lines;
+  flg_pixy = 0;
+  //flg_pixyCtr = 0;
+  flg_linesCtr = 0;
 }

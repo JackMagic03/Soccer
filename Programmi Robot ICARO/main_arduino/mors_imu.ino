@@ -19,7 +19,7 @@ void PhoenixImu_init() {
 
 }
 
-int PhoenixImu_read() {
+int imu_read() {
 
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
   int read_imu = euler.x();
