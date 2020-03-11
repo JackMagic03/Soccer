@@ -80,7 +80,6 @@ void linesGo_flg(uint8_t flg_linesCtr) {
   } else {
 
   }
-
 }
 
 int get_lines(int param) {

@@ -66,12 +66,12 @@ void loop() {
 
   uint8_t flg_linesCtr = test_flgLines(flg_lines, time_lines);
 
-  //uint8_t flg_pixyCtr = test_flgPixy(flg_pixy);
-  test_flgPixy(flg_pixy, read_imu);
+  int block_x, block_y;
+  uint8_t flg_pixyCtr = test_flgPixy(flg_pixy, &block_x, &block_y);
 
   linesGo_flg(flg_linesCtr);
 
-  //pixyGo_flg(flg_pixyCtr, read_imu);
+  pixyGo_flg(flg_pixyCtr, read_imu, block_x, block_y);
 
   /*
   for(int i = 0; i<360; i++) {
@@ -81,6 +81,6 @@ void loop() {
   */
   old_flgLines = flg_lines;
   flg_pixy = 0;
-  //flg_pixyCtr = 0;
+  flg_pixyCtr = 0;
   flg_linesCtr = 0;
 }

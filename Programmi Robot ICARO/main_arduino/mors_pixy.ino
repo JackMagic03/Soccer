@@ -44,9 +44,9 @@ int read_pixy() {
   }
 }
 
-void test_flgPixy(uint8_t flg_pixy, int read_imu) {
+int test_flgPixy(uint8_t flg_pixy, int* t_x, int* t_y) {
 
-  //uint8_t flg_pixyCtr = 0;
+  uint8_t flg_pixyCtr = 0;
 
   if(flg_pixy) {
 
@@ -54,24 +54,18 @@ void test_flgPixy(uint8_t flg_pixy, int read_imu) {
 
       switch (pixy.ccc.blocks[i].m_signature) {
         case 0: //Palla
-
-          Serial.println("Palla");
-          float pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
-          PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
-          // flg_pixyCtr = 1;
-          // return flg_pixyCtr;
+          *t_x = pixy.ccc.blocks[i].m_x;
+          *t_y = pixy.ccc.blocks[i].m_y;
+          flg_pixyCtr = 1;
+          return flg_pixyCtr;
           break;
         case 1: //Porta Gialla
-
-          Serial.println("Porta Gialla");
-          // flg_pixyCtr = 2;
-          // return flg_pixyCtr;
+          flg_pixyCtr = 2;
+          return flg_pixyCtr;
           break;
         case 2: //Porta Blu
-
-          Serial.println("Porta Blu");
-          // flg_pixyCtr = 3;
-          // return flg_pixyCtr;
+          flg_pixyCtr = 3;
+          return flg_pixyCtr;
           break;
       }
     }
@@ -80,19 +74,19 @@ void test_flgPixy(uint8_t flg_pixy, int read_imu) {
   }
 }
 
-// void pixyGo_flg(uint8_t flg_pixyCtr, int read_imu) {
-//
-//   switch (flg_pixyCtr) {
-//     case 1:
-//       Serial.println("Palla");
-//       float pixyAngolo = atan2(pixy.ccc.blocks[i].m_y, pixy.ccc.blocks[i].m_x);
-//       PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
-//     break;
-//     case 2:
-//       Serial.println("Porta Gialla");
-//     break;
-//     case 3:
-//       Serial.println("Porta Blu");
-//     break;
-//   }
-// }
+void pixyGo_flg(uint8_t flg_pixyCtr, int read_imu, int t_x, int t_y) {
+
+  switch (flg_pixyCtr) {
+    case 1:
+      Serial.println("Palla");
+      float pixyAngolo = atan2(t_y, t_x);
+      PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
+    break;
+    case 2:
+      Serial.println("Porta Gialla");
+    break;
+    case 3:
+      Serial.println("Porta Blu");
+    break;
+  }
+}
