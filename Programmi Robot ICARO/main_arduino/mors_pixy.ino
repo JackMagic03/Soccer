@@ -51,17 +51,17 @@ int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y) {
     for(int i=0; i<NUM_BLOCKS; i++) {
 
       switch (pixy.ccc.blocks[i].m_signature) {
-        case 0: //Palla
+        case 1: //Palla
           *t_x = pixy.ccc.blocks[i].m_x;
           *t_y = pixy.ccc.blocks[i].m_y;
           flg_pixyCtr = 1;
           return flg_pixyCtr;
           break;
-        case 1: //Porta Gialla
+        case 2: //Porta Gialla
           flg_pixyCtr = 2;
           return flg_pixyCtr;
           break;
-        case 2: //Porta Blu
+        case 3: //Porta Blu
           flg_pixyCtr = 3;
           return flg_pixyCtr;
           break;
