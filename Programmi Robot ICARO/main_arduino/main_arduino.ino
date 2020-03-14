@@ -54,20 +54,22 @@ void loop() {
 
   static uint8_t old_flgLines = 0;
   static unsigned long time_lines = 0;
+  static uint8_t GET_BLOCKS;
+  static uint8_t NUM_BLOCKS;
 
   uint8_t flg_lines = read_lines();
   if(old_flgLines != flg_lines && flg_lines == 1) {
     time_lines = millis();
   }
 
-  uint8_t flg_pixy = read_pixy();
+  uint8_t flg_pixy = read_pixy(&GET_BLOCKS, &NUM_BLOCKS);
 
-  int read_imu = imu_read();
+  int read_imu = PhoenixImu_read();
 
   uint8_t flg_linesCtr = test_flgLines(flg_lines, time_lines);
 
   int block_x, block_y;
-  uint8_t flg_pixyCtr = test_flgPixy(flg_pixy, &block_x, &block_y);
+  uint8_t flg_pixyCtr = test_flgPixy(flg_pixy, NUM_BLOCKS, &block_x, &block_y);
 
   linesGo_flg(flg_linesCtr);
 

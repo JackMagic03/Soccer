@@ -12,7 +12,7 @@
 //
 // end license header
 //
-// Arduino ICSP SPI link class 
+// Arduino ICSP SPI link class
 
 #ifndef _PIXY2_H
 #define _PIXY2_H
@@ -31,12 +31,12 @@ public:
     SPI.beginTransaction(SPISettings(PIXY_SPI_CLOCKRATE, MSBFIRST, SPI_MODE3));
 	return 0;
   }
-	
+
   void close()
   {
     SPI.endTransaction();
   }
-    
+
   int16_t recv(uint8_t *buf, uint8_t len, uint16_t *cs=NULL)
   {
     uint8_t i;
@@ -50,7 +50,7 @@ public:
     }
     return len;
   }
-    
+
   int16_t send(uint8_t *buf, uint8_t len)
   {
     uint8_t i;

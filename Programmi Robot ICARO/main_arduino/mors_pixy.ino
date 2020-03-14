@@ -4,11 +4,9 @@
  * Massimo Giordano, Diego de Martino
  */
 
-uint8_t GET_BLOCKS;
-uint8_t NUM_BLOCKS;
 uint8_t TOT_BLOCKS = 3;
 
-void pixy_test() {
+/*void pixy_test() {
 
   GET_BLOCKS = pixy.ccc.getBlocks();
   NUM_BLOCKS = pixy.ccc.numBlocks;
@@ -22,9 +20,9 @@ void pixy_test() {
       pixy.ccc.blocks[i].print();
     }
   }
-}
+}*/
 
-int read_pixy() {
+int read_pixy(uint8_t *GET_BLOCKS, uint8_t *NUM_BLOCKS) {
 
   uint8_t flg_pixy = 0;
 
@@ -44,13 +42,13 @@ int read_pixy() {
   }
 }
 
-int test_flgPixy(uint8_t flg_pixy, int* t_x, int* t_y) {
+int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y) {
 
   uint8_t flg_pixyCtr = 0;
 
   if(flg_pixy) {
 
-    for(int i=0; i<TOT_BLOCKS; i++) {
+    for(int i=0; i<NUM_BLOCKS; i++) {
 
       switch (pixy.ccc.blocks[i].m_signature) {
         case 0: //Palla
@@ -74,12 +72,12 @@ int test_flgPixy(uint8_t flg_pixy, int* t_x, int* t_y) {
   }
 }
 
-void pixyGo_flg(uint8_t flg_pixyCtr, int read_imu, int t_x, int t_y) {
+void pixyGo_flg(uint8_t flg_pixyCtr, int read_imu, int block_x, int block_y) {
 
   switch (flg_pixyCtr) {
     case 1:
       Serial.println("Palla");
-      float pixyAngolo = atan2(t_y, t_x);
+      float pixyAngolo = atan2(block_y, block_x);
       PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
     break;
     case 2:
