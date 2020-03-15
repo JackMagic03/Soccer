@@ -4,8 +4,6 @@
  * Massimo Giordano, Diego de Martino
  */
 
-uint8_t TOT_BLOCKS = 3;
-
 /*void pixy_test() {
 
   GET_BLOCKS = pixy.ccc.getBlocks();
@@ -26,20 +24,24 @@ int read_pixy(uint8_t *GET_BLOCKS, uint8_t *NUM_BLOCKS) {
 
   uint8_t flg_pixy = 0;
 
-  GET_BLOCKS = pixy.ccc.getBlocks();
-  NUM_BLOCKS = pixy.ccc.numBlocks;
+  *GET_BLOCKS = pixy.ccc.getBlocks();
+  *NUM_BLOCKS = pixy.ccc.numBlocks;
 
-  if(NUM_BLOCKS) {
+  if(*GET_BLOCKS > 0) {
 
-    flg_pixy = 1;
-    return flg_pixy;
+    if(*NUM_BLOCKS) {
 
+      flg_pixy = 1;
+
+    } else {
+
+      flg_pixy = 0;
+
+    }
   } else {
 
-    flg_pixy = 0;
-    return flg_pixy;
-
   }
+  return flg_pixy;
 }
 
 int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y) {
@@ -51,21 +53,19 @@ int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y) {
     for(int i=0; i<NUM_BLOCKS; i++) {
 
       switch (pixy.ccc.blocks[i].m_signature) {
-        case 1: //Palla
+        case 0: //Palla
           *t_x = pixy.ccc.blocks[i].m_x;
           *t_y = pixy.ccc.blocks[i].m_y;
           flg_pixyCtr = 1;
-          return flg_pixyCtr;
           break;
-        case 2: //Porta Gialla
+        case 1: //Porta Gialla
           flg_pixyCtr = 2;
-          return flg_pixyCtr;
           break;
-        case 3: //Porta Blu
+        case 2: //Porta Blu
           flg_pixyCtr = 3;
-          return flg_pixyCtr;
           break;
       }
+      return flg_pixyCtr;
     }
   } else {
 
