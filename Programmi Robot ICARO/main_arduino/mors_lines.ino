@@ -5,40 +5,105 @@
  */
 
 int sogliaBianco;
-uint16_t analogReadLines[6] {0};  // L'array che contiene i valori letti dai sensori
+/**
+ * La soglia va impostata sperimentalmente, provando con diverse illuminazioni
+ * e angolazioni i valori che restituisce e se ne fa una media.
+ */
 
+int readingLines[6];
+/**
+ * L'array dedicato alla lettura dei sensori di linea ha dimensione 6;
+ * quando andiamo ad aggiungerlo nella funzione di lettura, dobbiamo inserire dei
+ * controlli ulteriori, per fare in modo che i sensori diventno 4: N, S, E, W.
+ *
+ * Successivamente dobbiamo salvare le letture in una variabile e dobbiamo assegnare
+ * una lettura per ogni bit della variabile. Per farlo dobbiamo usare le funzioni della
+ * libreria di arduino bit.
+ *
+ * Per settare il singolo bit si usa la funzione bitSet(variabile, bit);
+ * Per resettare la variabile si usa bitClear(variabile, bit);
+ * Per leggere il valore di un singolo bit si usa bitRead(variabile, bit);
+ */
+
+void init_lines() {
+
+  for(int i = 0; i < 6; i++) {
+    pinMode(pinLines[i], INPUT);
+    readingLines[i] = 0;
+  }
+  sbi(ADCSRA, ADPS2);
+  cbi(ACDSRA, ADPS1);
+  cbi(ACDSRA, ADPS0);
+
+}
 void test_lines() {
 
   for(int i = 0; i < 6; i++) {
 
-    analogReadLines[i] = analogRead(pinLines[i]);
+    readingLines[i] = analogRead(pinLines[i]);
     Serial.print("Leggo il pin ");
-    Serial.print(i);
+    Serial.print(i + 1);
     Serial.print("   ");
-    Serial.println(analogReadLines[i]);
+    Serial.println(readingLines[i]);
     delay(50);
 
   }
 }
 
-int read_lines() {
+int read_lines(uint8_t *bit_ctr) {
 
   uint8_t flg_lines = 0;
 
-  for(int i = 0; i < 6; i++) {
+  *bit_ctr = 0;
+  /**
+   * La variabile bit_ctr serve per tenere conto di quanti e quali sensori hanno
+   * rilevato la presenza della linea bianca.
+   *
+   * Ragioniamo cosi:
+   *
+   *  => Se il bit 0 assume il valore alto, i due sensori anteriori hanno rilevato il bianco;
+   *
+   *  => Se il bit 1 assume il valore alto, il sensore di destra ha rilevato il bianco;
+   *
+   *  => Se il bit 2 assume il valore alto, i due sensori posteriori hanno rilevato il bianco;
+   *
+   *  => Se il bit 3 assume il valore alto, il sensore di sinistra ha trovato il bianco.
+   */
 
-    analogReadLines[i] = analogRead(pinLines[i]);
+   for(int i = 0; i < 6; i++) {
 
-    if(analogReadLines[i] >= sogliaBianco) {
+     readingLines[i] = analogRead(pinLines[i]);
 
-        flg_lines = 1;    //Stiamo trovando un colore molto chiaro
-        return flg_lines; //Impostiamo 1 come valore del bianco
+   }
 
-    } else {
+  if(readingLines[0] >= sogliaBianco || readingLines[1] >= sogliaBianco) {
+    /**
+     * Impostare il bit 0 della variabile "bit_ctr" al valore 1;
+     */
+    flg_lines = 1;
 
-    }
   }
-  flg_lines = 0;
+  if (readingLines[2] >= sogliaBianco) {
+    /**
+     * Impostare il bit 1 della variabile "bit_ctr" al valore 1;
+     */
+    flg_lines = 1;
+
+  }
+  if (readingLines[3] >= sogliaBianco || readingLines[4] >= sogliaBianco) {
+    /**
+     * Impostare il bit 2 della variabile "bit_ctr" al valore 1;
+     */
+    flg_lines = 1;
+
+  }
+  if (readingLines[5] >= sogliaBianco) {
+    /**
+     * Impostare il bit 3 della variabile "bit_ctr" al valore 1;
+     */
+    flg_lines = 1;
+
+  }
   return flg_lines;
 }
 
@@ -83,5 +148,5 @@ void linesGo_flg(uint8_t flg_linesCtr) {
 }
 
 int get_lines(int param) {
-  return analogReadLines[param];
+  return readingLines[param];
 }

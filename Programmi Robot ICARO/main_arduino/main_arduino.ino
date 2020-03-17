@@ -26,7 +26,9 @@ uint8_t pinPwm[NUM_JOINTS] = {2, 11, 5};   //bianco
 #define sda_imu 20
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
-uint16_t pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
+int pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
 
 Pixy2 pixy;
 /**
@@ -46,6 +48,8 @@ void setup() {
 
   PhoenixDrive_init();
 
+  init_lines();
+
   pixy.init();
 
 }
@@ -56,8 +60,9 @@ void loop() {
   static unsigned long time_lines = 0;
   static uint8_t GET_BLOCKS;
   static uint8_t NUM_BLOCKS;
+  static uint8_t bit_lines = 0;
 
-  uint8_t flg_lines = read_lines();
+  uint8_t flg_lines = read_lines(&bit_lines);
   if(old_flgLines != flg_lines && flg_lines == 1) {
     time_lines = millis();
   }

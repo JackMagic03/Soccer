@@ -52,38 +52,36 @@ int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y) {
 
     for(int i=0; i<NUM_BLOCKS; i++) {
 
-      switch (pixy.ccc.blocks[i].m_signature) {
-        case 0: //Palla
-          *t_x = pixy.ccc.blocks[i].m_x;
-          *t_y = pixy.ccc.blocks[i].m_y;
-          flg_pixyCtr = 1;
-          break;
-        case 1: //Porta Gialla
-          flg_pixyCtr = 2;
-          break;
-        case 2: //Porta Blu
-          flg_pixyCtr = 3;
-          break;
+      if(pixy.ccc.blocks[i].m_signature == 0) {
+        *t_x = pixy.ccc.blocks[i].m_x;
+        *t_y = pixy.ccc.blocks[i].m_y;
+        flg_pixyCtr = 1;
       }
-      return flg_pixyCtr;
-    }
-  } else {
+      else if(pixy.ccc.blocks[i].m_signature == 1) {
+        flg_pixyCtr = 2;
+      }
+      else if(pixy.ccc.blocks[i].m_signature == 2) {
+        flg_pixyCtr = 3;
+      } else {
 
+      }
+    }
   }
+  return flg_pixyCtr;
 }
 
 void pixyGo_flg(uint8_t flg_pixyCtr, int read_imu, int block_x, int block_y) {
 
   switch (flg_pixyCtr) {
-    case 1:
+    case 0:
       Serial.println("Palla");
       float pixyAngolo = atan2(block_y, block_x);
       PhoenixDrive_setSpeed(pixyAngolo, 200, read_imu);
     break;
-    case 2:
+    case 1:
       Serial.println("Porta Gialla");
     break;
-    case 3:
+    case 2:
       Serial.println("Porta Blu");
     break;
   }
