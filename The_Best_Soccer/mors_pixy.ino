@@ -4,21 +4,20 @@
  * Massimo Giordano, Diego de Martino
  */
 
-/*void pixy_test() {
+void pixy_test() {
 
-  GET_BLOCKS = pixy.ccc.getBlocks();
-  NUM_BLOCKS = pixy.ccc.numBlocks;
+  pixy.ccc.getBlocks();
 
-  if(NUM_BLOCKS) {
+  if(pixy.ccc.numBlocks) {
 
-    Serial.println(NUM_BLOCKS);
+    Serial.println(pixy.ccc.numBlocks);
     Serial.println(" --- ");
 
-    for(int i=0; i<NUM_BLOCKS; i++){
+    for(int i=0; i<pixy.ccc.numBlocks; i++){
       pixy.ccc.blocks[i].print();
     }
   }
-}*/
+}
 
 int read_pixy(uint8_t *GET_BLOCKS, uint8_t *NUM_BLOCKS) {
 
@@ -44,9 +43,24 @@ int read_pixy(uint8_t *GET_BLOCKS, uint8_t *NUM_BLOCKS) {
   return flg_pixy;
 }
 
-int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y) {
+int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y, uint8_t *bit_ctr) {
 
-  uint8_t flg_pixyCtr = 0;
+  /**
+   * Il puntatore bit_ctr serve, analogamente a quella dei sensori di linea, per salvare le varie
+   * letture che esegue la pixy.
+   *
+   * Salveremo nei singoli bit della variabile "bit_ctr" i vari blocchi che ci interessano:
+   *
+   *  => La palla la salviamo nel bit 0;
+   *
+   *  => La porta davanti al robot la salviamo nel bit 1;
+   *
+   *  => La porta dietro la salviamo nel bit 2;
+   *
+   * Nel momento in cui dobbiamo controllare quali blocchi sono stati rilevati, facciamo
+   * un semplice controllo sul valore della variabile, dato che, dall'algebra binaria,
+   * quando vede solo la palla sarà uguale a 1, mentre se vede tutto quanto sarà uguale a 7;
+   */
 
   if(flg_pixy) {
 
@@ -55,19 +69,28 @@ int test_flgPixy(uint8_t flg_pixy, uint8_t NUM_BLOCKS, int* t_x, int* t_y) {
       if(pixy.ccc.blocks[i].m_signature == 0) {
         *t_x = pixy.ccc.blocks[i].m_x;
         *t_y = pixy.ccc.blocks[i].m_y;
-        flg_pixyCtr = 1;
+        /**
+         * Impostiamo il bit 0 della variabile bit_ctr ad 1;
+         */
+      } else {
+        
       }
-      else if(pixy.ccc.blocks[i].m_signature == 1) {
-        flg_pixyCtr = 2;
+      if(pixy.ccc.blocks[i].m_signature == 1) {
+        /**
+         * Impostiamo il bit 1 della variabile bit_ctr ad 1;
+         */
+      } else {
+
       }
-      else if(pixy.ccc.blocks[i].m_signature == 2) {
-        flg_pixyCtr = 3;
+      if(pixy.ccc.blocks[i].m_signature == 2) {
+        /**
+         * Impostiamo il bit 2 della variabile bit_ctr ad 1;
+         */
       } else {
 
       }
     }
   }
-  return flg_pixyCtr;
 }
 
 void pixyGo_flg(uint8_t flg_pixyCtr, int read_imu, int block_x, int block_y) {

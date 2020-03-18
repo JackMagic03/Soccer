@@ -4,6 +4,19 @@
  * Massimo Giordano, Diego de Martino
  */
 
+// typedef struct{
+//
+//   int sogliaBianco;
+//   int readingLines[6];
+//
+//   uint8_t flg_lines;
+//   uint8_t old_flgLines;
+//   uint8_t flg_linesCtr;
+//   unsigned long time_lines;
+//   uint8_t bit_lines;
+// 
+// }PhoenixLine
+
 int sogliaBianco;
 /**
  * La soglia va impostata sperimentalmente, provando con diverse illuminazioni
@@ -51,6 +64,10 @@ void test_lines() {
 }
 
 int read_lines(uint8_t *bit_ctr) {
+  /**
+   * Ho passato il puntatore con lo stesso metodo per cui ho passato lel coordinate
+   * della palla alle bariabili "block_x" e "block_y", dichiarate nel loop;
+   */
 
   uint8_t flg_lines = 0;
 
@@ -82,12 +99,16 @@ int read_lines(uint8_t *bit_ctr) {
      */
     flg_lines = 1;
 
+  } else {
+
   }
   if (readingLines[2] >= sogliaBianco) {
     /**
      * Impostare il bit 1 della variabile "bit_ctr" al valore 1;
      */
     flg_lines = 1;
+
+  } else {
 
   }
   if (readingLines[3] >= sogliaBianco || readingLines[4] >= sogliaBianco) {
@@ -96,12 +117,16 @@ int read_lines(uint8_t *bit_ctr) {
      */
     flg_lines = 1;
 
+  } else {
+
   }
   if (readingLines[5] >= sogliaBianco) {
     /**
      * Impostare il bit 3 della variabile "bit_ctr" al valore 1;
      */
     flg_lines = 1;
+
+  } else {
 
   }
   return flg_lines;
