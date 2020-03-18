@@ -14,8 +14,8 @@
 //   uint8_t flg_linesCtr;
 //   unsigned long time_lines;
 //   uint8_t bit_lines;
-// 
-// }PhoenixLine
+//
+// }PhoenixLine;
 
 int sogliaBianco;
 /**
