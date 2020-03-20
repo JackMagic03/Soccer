@@ -26,8 +26,8 @@ uint8_t pinPwm[NUM_JOINTS] = {2, 11, 5};   //bianco
 #define sda_imu 20
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
-// #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-// #define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
 int pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
 
 Pixy2 pixy;
@@ -56,41 +56,38 @@ void setup() {
 
 void loop() {
 
-  // static uint8_t old_flgLines = 0;
-  // static unsigned long time_lines = 0;
-  // static uint8_t GET_BLOCKS;
-  // static uint8_t NUM_BLOCKS;
-  // static uint8_t bit_lines = 0;
-  //
-  // uint8_t flg_lines = read_lines(&bit_lines);
-  // if(old_flgLines != flg_lines && flg_lines == 1) {
-  //   time_lines = millis();
-  // }
-  //
-  // uint8_t flg_pixy = read_pixy(&GET_BLOCKS, &NUM_BLOCKS);
-  //
-  // int read_imu = PhoenixImu_read();
-  //
-  // uint8_t flg_linesCtr = test_flgLines(flg_lines, time_lines);
-  //
-  // int block_x, block_y;
-  // uint8_t flg_pixyCtr = test_flgPixy(flg_pixy, NUM_BLOCKS, &block_x, &block_y);
-  //
-  // linesGo_flg(flg_linesCtr);
-  //
-  // pixyGo_flg(flg_pixyCtr, read_imu, block_x, block_y);
-  //
-  // /*
-  // for(int i = 0; i<360; i++) {
-  //   PhoenixDrive_setSpeed(i, 200, read_imu);
-  //   delay(5);
-  // }
-  // */
-  // old_flgLines = flg_lines;
-  // flg_pixy = 0;
-  // flg_pixyCtr = 0;
-  // flg_linesCtr = 0;
+  static uint8_t old_flgLines = 0;
+  static unsigned long time_lines = 0;
+  static uint8_t GET_BLOCKS;
+  static uint8_t NUM_BLOCKS;
+  static uint8_t bit_lines = 0;
+
+  uint8_t flg_lines = read_lines(&bit_lines);
+  if(old_flgLines != flg_lines && flg_lines == 1) {
+    time_lines = millis();
+  }
+
+  uint8_t flg_pixy = read_pixy(&GET_BLOCKS, &NUM_BLOCKS);
 
   int read_imu = PhoenixImu_read();
-  PhoenixDrive_setSpeed(0, 200, read_imu);
+
+  uint8_t flg_linesCtr = test_flgLines(flg_lines, time_lines);
+
+  int block_x, block_y;
+  uint8_t flg_pixyCtr = test_flgPixy(flg_pixy, NUM_BLOCKS, &block_x, &block_y);
+
+  linesGo_flg(flg_linesCtr);
+
+  pixyGo_flg(flg_pixyCtr, read_imu, block_x, block_y);
+
+  /*
+  for(int i = 0; i<360; i++) {
+    PhoenixDrive_setSpeed(i, 200, read_imu);
+    delay(5);
+  }
+  */
+  old_flgLines = flg_lines;
+  flg_pixy = 0;
+  flg_pixyCtr = 0;
+  flg_linesCtr = 0;
 }

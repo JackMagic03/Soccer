@@ -44,9 +44,9 @@ void init_lines() {
     pinMode(pinLines[i], INPUT);
     readingLines[i] = 0;
   }
-  // sbi(ADCSRA, ADPS2);
-  // cbi(ACDSRA, ADPS1);
-  // cbi(ACDSRA, ADPS0);
+  sbi(ADCSRA, ADPS2);
+  cbi(ACDSRA, ADPS1);
+  cbi(ACDSRA, ADPS0);
 
 }
 void test_lines() {
