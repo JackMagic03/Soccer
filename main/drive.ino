@@ -50,8 +50,8 @@ void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
    * perché tutti i componenti elettronici del robot ragionano in radianti,
    * tranne la bussola ma in questo caso non importa.
    */
-   d-> v_x = t_vel * sin(t_angle);
-   d-> v_y = t_vel * cos(t_angle);
+   d-> v_x = t_vel * sin(morsdrive_radianti(t_angle - 270));
+   d-> v_y = t_vel * cos(morsdrive_radianti(t_angle - 270));
 
    /**
     * Questo passagio serve per portare la lettura della bussola
@@ -97,6 +97,6 @@ void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
    for (int i = 0; i < NUM_JOINTS; i++) {
 
      morsjoints_handle(&joints_handler, i, d-> vel[i]);
-     
+
    }
 }
