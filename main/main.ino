@@ -1,14 +1,13 @@
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
- uint8_t dir_a[NUM_JOINTS];
- uint8_t dir_b[NUM_JOINTS];
- uint8_t pwm[NUM_JOINTS];
+  uint8_t dir_a[NUM_JOINTS];
+  uint8_t dir_b[NUM_JOINTS];
+  uint8_t pwm[NUM_JOINTS];
 
- uint8_t direzione[NUM_JOINTS];
- uint8_t velocita[NUM_JOINTS];
+  uint8_t direzione[NUM_JOINTS];
+  uint8_t velocita[NUM_JOINTS];
 } MorsJoints;
 MorsJoints joints_handler;
-//typedef struct MorsJoints MorsJoints;
 
 typedef struct {
   double matrix [NUM_JOINTS][NUM_JOINTS] =
@@ -63,6 +62,8 @@ const int SOGLIA_LINEE[NUM_LINES] = {800, 800, 800, 800, 800, 800};
 const uint8_t PIN_LINEE[NUM_LINES] = {A0, A1, A2, A3, A4, A5};
 const int ANGOLI_LINEE[NUM_LINES] = {30, 90, 150, 210, 270, 330};
 
+Adafruit_BNO055 bno = Adafruit_BNO055(55);
+
 void setup() {
 
   morsjoints_init(&joints_handler, PIN_DIR_A, PIN_DIR_B, PIN_PWM);
@@ -73,8 +74,9 @@ void setup() {
 
 void loop() {
 
-  morslines_read(&line_handler);
+  int read_imu = morsimu_read();
 
-  morslines_handle(&line_handler);
+  morsdrive_setspeed(&drive_handler, 0, 200, read_imu);
+  morsdrive_handle(&drive_handler);
 
 }
