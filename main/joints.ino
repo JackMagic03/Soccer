@@ -10,7 +10,7 @@ void morsjoints_init(MorsJoints* j, uint8_t* t_dir_a, uint8_t* t_dir_b, uint8_t*
     j-> dir_b[i] = t_dir_b[i];
     j-> pwm[i]   = t_pwm[i];
     j-> velocita[i] = 0;
-    j-> direzione[i] = 0;
+    j-> direzione[i] = LOW;
 
     pinMode(j-> dir_a[i], OUTPUT);
     pinMode(j-> dir_b[i], OUTPUT);

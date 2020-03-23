@@ -90,7 +90,12 @@ void loop() {
 
   int read_imu = morsimu_read();
 
-  morsdrive_setspeed(&drive_handler, 0, 200, read_imu);
-  morsdrive_handle(&drive_handler);
+  // morsdrive_setspeed(&drive_handler, 0, 200, read_imu);
+  // morsdrive_handle(&drive_handler);
+
+  for(int i = 0; i < 3; i++) {
+    morsjoints_setspeed(&joints_handler, i, 200);
+  }
+  morsjoints_handle(&joints_handler, 0);
 
 }
