@@ -26,8 +26,8 @@ uint8_t pinPwm[NUM_JOINTS] = {2, 11, 5};   //bianco
 #define sda_imu 20
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
-#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-#define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
+// #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+// #define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
 int pinLines[6] = { A0, A1, A2, A3, A4, A5 };  // i 6 pin analogici dei sensori
 
 Pixy2 pixy;
