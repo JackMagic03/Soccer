@@ -38,8 +38,8 @@ void PhoenixDrive_init() {
 //Funzione che gestisce tutte le direzioni dei motori
 void PhoenixDrive_setSpeed(float angolo, int velocita, int my_bussola) {
 
-  vx = velocita * sin(drive_radianti (angolo - 270);
-  vy = velocita * cos(drive_radianti (angolo - 270);
+  vx = velocita * sin(drive_radianti (angolo - 270));
+  vy = velocita * cos(drive_radianti (angolo - 270));
 
   //Portare la bussola da 0 - 360 a -180 - +180
   if(my_bussola <= 180) Rw = my_bussola;
