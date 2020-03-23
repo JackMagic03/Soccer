@@ -15,7 +15,7 @@ typedef struct {
   uint8_t pwm[NUM_JOINTS];
 
   uint8_t direzione[NUM_JOINTS];
-  uint8_t velocita[NUM_JOINTS];
+  uint8_t vel[NUM_JOINTS];
 } MorsJoints;
 MorsJoints joints_handler;
 
