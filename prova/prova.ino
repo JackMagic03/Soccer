@@ -1,8 +1,21 @@
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 #define SOGLIA_LINEE {800, 800, 800, 800, 800, 800}
 #define PIN_LINEE {A0, A1, A2, A3, A4, A5}
 #define ANGOLI_LINEE {30, 90, 150, 210, 270, 330}
 =======
+=======
+/**
+ * main.ino
+ * @author Massimo Giordano
+ */
+
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+
+>>>>>>> Ciao:main/main.ino
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
  uint8_t dir_a[NUM_JOINTS];
