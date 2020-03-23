@@ -6,6 +6,7 @@
 #define PIN_LINEE {A0, A1, A2, A3, A4, A5}
 #define ANGOLI_LINEE {30, 90, 150, 210, 270, 330}
 
+MorsDrive drive_handler;
 MorsJoints joints_handler;
 MorsLines line_handler;
 

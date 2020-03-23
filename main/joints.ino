@@ -179,20 +179,20 @@ void morsdrive_setspeed(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
                  d-> drive_Matrix [2][1] * d-> vy +
                  d-> drive_Matrix [2][2] * d-> Dw;
 
+   for (int i = 0; i < NUM_JOINTS; i++) {
+     /**
+      * Passo l'indirizzo del puntatore alla struttura MorsJoints.
+      * È come quando passavo l'indisizzo dell'oggetto della struttura nel main.
+      *
+      * Prima richiamo la funzione setspeed, poi l'handle.
+      */
+     morsjoints_setspeed(d-> joints, i, d-> vel[i]);
+   }
 }
 
 void morsdrive_handle(MorsDrive* d) {
   /**
    * Questa funzione serve per dare effettivamente il comando al rotob di muoversi.
    */
-  for (int i = 0; i < NUM_JOINTS; i++) {
-    /**
-     * Passo l'indirizzo del puntatore alla struttura MorsJoints.
-     * È come quando passavo l'indisizzo dell'oggetto della struttura nel main.
-     *
-     * Prima richiamo la funzione setspeed, poi l'handle.
-     */
-    morsjoints_setspeed(&d-> joints, i, d-> vel[i]);
-  }
-  morsjoints_handle(&d-> joints, i);
+  morsjoints_handle(d-> joints, i);
 }
