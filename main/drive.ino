@@ -39,7 +39,7 @@ void morsdrive_init(MorsDrive* d) {
   }
 }
 
-void morsdrive_setspeed(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
+void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
   /**
    * Impostare la velocità per ogni singolo motore
    * dati angolo e velocità finale a cui il robot
@@ -101,15 +101,6 @@ void morsdrive_setspeed(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
       *
       * Prima richiamo la funzione setspeed, poi l'handle.
       */
-     morsjoints_setspeed(&joints_handler, i, d-> vel[i]);
+     morsjoints_handle(&joints_handler, i, d-> vel[i]);
    }
-}
-
-void morsdrive_handle(MorsDrive* d) {
-  /**
-   * Questa funzione serve per dare effettivamente il comando al rotob di muoversi.
-   */
-  for(int i = 0; i < NUM_JOINTS; i++) {
-    morsjoints_handle(&joints_handler, i);
-  }
 }

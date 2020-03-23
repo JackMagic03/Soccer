@@ -18,7 +18,7 @@ void morsjoints_init(MorsJoints* j, uint8_t* t_dir_a, uint8_t* t_dir_b, uint8_t*
   }
 }
 
-void morsjoints_setspeed(MorsJoints* j, uint8_t t_joints, int t_vel) {
+void morsjoints_handle(MorsJoints* j, uint8_t t_joints, int t_vel) {
   /**
    * La variabile joints quando richiamiamo la funzione assume i valori 1, 2 o 3.
    * Quando la passiamo agli array, sottraiamo 1 dato che la numerazione degli array inizia da 0
@@ -32,6 +32,10 @@ void morsjoints_setspeed(MorsJoints* j, uint8_t t_joints, int t_vel) {
     j-> vel[t_joints] = t_vel;
     j-> direzione[t_joints] = HIGH;
 
+    digitalWrite(j-> dir_a[t_joints], j-> direzione[t_joints]);
+    digitalWrite(j-> dir_b[t_joints], !j-> direzione[t_joints]);
+    analogWrite(j-> pwm[t_joints], j-> vel[t_joints]);
+
   } else {
 
     if(j-> vel[t_joints] < 255) {
@@ -39,13 +43,9 @@ void morsjoints_setspeed(MorsJoints* j, uint8_t t_joints, int t_vel) {
     }
     j-> vel[t_joints] = t_vel;
     j-> direzione[t_joints] = LOW;
+
+    digitalWrite(j-> dir_a[t_joints], j-> direzione[t_joints]);
+    digitalWrite(j-> dir_b[t_joints], !j-> direzione[t_joints]);
+    analogWrite(j-> pwm[t_joints], j-> vel[t_joints]);
   }
-}
-
-void morsjoints_handle(MorsJoints* j, uint8_t t_joints) {
-
-  digitalWrite(j-> dir_a[t_joints], j-> direzione[t_joints]);
-  digitalWrite(j-> dir_b[t_joints], !j-> direzione[t_joints]);
-  analogWrite(j-> pwm[t_joints], j-> vel[t_joints]);
-
 }
