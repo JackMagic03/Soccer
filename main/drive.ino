@@ -58,9 +58,9 @@ void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
     * da 0 % 360 a -180 % +180
     */
    if(t_imu < 180) {
-     d-> r_w = t_imu; //0 % 360
+     d-> r_w = t_imu;
    } else {
-     d-> r_w = t_imu - 360; //-180 % +180
+     d-> r_w = t_imu - 360;
    }
 
    /**
