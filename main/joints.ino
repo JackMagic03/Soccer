@@ -2,16 +2,8 @@
  * joints.ino => Creare le funzioni per il drive che gestiscono i motori fisici
  * @author Massimo Giordano
  */
-struct MorsJoints{
- uint8_t dir_a[NUM_JOINTS];
- uint8_t dir_b[NUM_JOINTS];
- uint8_t pwm[NUM_JOINTS];
 
- uint8_t direzione[NUM_JOINTS];
- uint8_t velocita[NUM_JOINTS];
-};
-
-void morsjoints_init(MorsJoints* j, uint8_t t_dir_a[], uint8_t t_dir_b[], uint8_t t_pwm[]) {
+void morsjoints_init(MorsJoints* j, uint8_t* t_dir_a, uint8_t* t_dir_b, uint8_t* t_pwm) {
 
   for(int i = 0; i < NUM_JOINTS; i++) {
     j-> dir_a[i] = t_dir_a[i];

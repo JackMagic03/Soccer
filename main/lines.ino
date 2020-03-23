@@ -4,31 +4,7 @@
  */
 #define DEFAULT_TIMER 3000
 
-struct MorsLines{
-  uint8_t pin[NUM_LINES];
-  int16_t angoli[NUM_LINES];
-  int raw_data[NUM_LINES];
-  uint8_t data[NUM_LINES];
-  /**
-   * Le due variabili raw_data e data sono gli array che salvano i valori che leggono i sensori;
-   *
-   * raw_data salva le letture grezze dei sensori, data ha solo valori 0 o 1, se sono state rilevare linee o meno
-   */
-  uint8_t mask[NUM_LINES];
-  /**
-   * L'array mask serve per l'ulteriore controllo quando si parla delle letture dei sensori,
-   * perché le sue variabili vengono messe da 1 solo quando il sensore non ha mai letto prima
-   */
-  int soglia[NUM_LINES];
-
-  uint8_t flg;
-  int timer;
-  int tot_angle;      //La somma degli angoli dei sensori che hanno rilevato qualcosa
-  uint8_t num_angle;  //Il numero degli angoli che hanno trovato quancosa
-  int escape_angle;   //La traiettoria calcolata dalla media dei vettori dagli angoli dei sensori
-};
-
-void morslines_init(MorsLines* l, uint8_t t_pin[], int16_t t_angle[], int t_soglia[]) {
+void morslines_init(MorsLines* l, uint8_t* t_pin, int* t_angle, int* t_soglia) {
 
   for(int i = 0; i < NUM_LINES; i++) {
     l-> pin[i] = t_pin[i];
