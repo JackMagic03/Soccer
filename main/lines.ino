@@ -1,12 +1,10 @@
-#define NUM_LINES 6           //Sono i sensori di linea che abbiamo.
-#define DEFAULT_TIMER 3000
 /**
- * Ci serve questo dato perché viene assegnato alla variabile timer interna alla struttura.
- * Lo spiego meglio quando viene richiamata la variabile.
+ * lines.ino => Gestione delle letture dei sensori di linea
+ * @author Massimo Giordano
  */
+#define DEFAULT_TIMER 3000
 
-typedef struct {
-
+struct MorsLines{
   uint8_t pin[NUM_LINES];
   int16_t angoli[NUM_LINES];
   int raw_data[NUM_LINES];
@@ -28,8 +26,7 @@ typedef struct {
   int tot_angle;      //La somma degli angoli dei sensori che hanno rilevato qualcosa
   uint8_t num_angle;  //Il numero degli angoli che hanno trovato quancosa
   int escape_angle;   //La traiettoria calcolata dalla media dei vettori dagli angoli dei sensori
-
-} MorsLines;
+};
 
 void morslines_init(MorsLines* l, uint8_t t_pin[], int16_t t_angle[], int t_soglia[]) {
 
@@ -92,7 +89,7 @@ void morslines_handle(MorsLines* l) {
     l-> timer --;
 
     if(l-> timer == 0) {
-      morslines_reset();
+      morslines_reset(&line_handler);
     }
   }
 }
