@@ -1,3 +1,13 @@
+/**
+ * main.ino
+ * @author Massimo Giordano
+ */
+
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
   uint8_t dir_a[NUM_JOINTS];
