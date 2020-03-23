@@ -18,6 +18,7 @@
 >>>>>>> Ciao:main/main.ino
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
  uint8_t dir_a[NUM_JOINTS];
  uint8_t dir_b[NUM_JOINTS];
  uint8_t pwm[NUM_JOINTS];
@@ -28,6 +29,13 @@ typedef struct {
 =======
   uint8_t direzione[NUM_JOINTS];
   uint8_t vel[NUM_JOINTS];
+>>>>>>> Ciao:main/main.ino
+=======
+  
+  uint8_t dir_a[NUM_JOINTS];
+  uint8_t dir_b[NUM_JOINTS];
+  uint8_t pwm[NUM_JOINTS];
+
 >>>>>>> Ciao:main/main.ino
 } MorsJoints;
 MorsJoints joints_handler;
@@ -98,6 +106,14 @@ MorsLines line_handler;
 
 void setup() {
 
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+=======
+  Serial.begin(9600);
+
+  morsjoints_init(&joints_handler, PIN_DIR_A, PIN_DIR_B, PIN_PWM);
+  morsdrive_init(&drive_handler);
+
+>>>>>>> Ciao:main/main.ino
   morslines_init(&line_handler, PIN_LINEE, ANGOLI_LINEE, SOGLIA_LINEE);
 
   morsimu_init();
@@ -105,6 +121,7 @@ void setup() {
 
 void loop() {
 
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
   morslines_read(&line_handler);
@@ -156,6 +173,10 @@ void loop() {
   int read_imu = morsimu_read();
   Serial.println(read_imu);
   //
+=======
+  // int read_imu = morsimu_read();
+
+>>>>>>> Ciao:main/main.ino
   // morsdrive_handle(&drive_handler, 0, 200, read_imu);
 
 >>>>>>> Ciao:main/main.ino
