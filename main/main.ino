@@ -88,13 +88,20 @@ void setup() {
 
 void loop() {
 
-  int read_imu = morsimu_read();
+  // int read_imu = morsimu_read();
+  //
+  // morsdrive_setspeed(&drive_handler, 0, 200, read_imu);
+  // morsdrive_handle(&drive_handler);
 
-  morsdrive_setspeed(&drive_handler, 0, 200, read_imu);
-  morsdrive_handle(&drive_handler);
+  morsjoints_setspeed(&joints_handler, 0, 200);
+  morsjoints_handle(&joints_handler, 0);
+  morsjoints_setspeed(&joints_handler, 0, 0);
 
-  // for(int i = 0; i < 3; i++) {
-  //   morsjoints_setspeed(&joints_handler, i, 200);
-  // }
-  // morsjoints_handle(&joints_handler, 0);
+  morsjoints_setspeed(&joints_handler, 1, 200);
+  morsjoints_handle(&joints_handler, 0);
+  morsjoints_setspeed(&joints_handler, 1, 0);
+
+  morsjoints_setspeed(&joints_handler, 2, 200);
+  morsjoints_handle(&joints_handler, 0);
+  morsjoints_setspeed(&joints_handler, 2, 0);
 }
