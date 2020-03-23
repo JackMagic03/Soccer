@@ -36,8 +36,8 @@ void morslines_init(MorsLines* l, uint8_t t_pin[], int16_t t_angle[], int t_sogl
   for(int i = 0; i < NUM_LINES; i++) {
     l-> pin[i] = t_pin[i];
     l-> angoli[i] = t_angle[i];
+    l-> soglia[i] = t_soglia[i];
   }
-  l-> soglia[i] = t_soglia[i];
   l-> tot_angle = LOW;
   l-> num_angle = LOW;
   l-> escape_angle = LOW;
