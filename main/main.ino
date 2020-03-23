@@ -10,7 +10,7 @@
 
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
-  
+
   uint8_t dir_a[NUM_JOINTS];
   uint8_t dir_b[NUM_JOINTS];
   uint8_t pwm[NUM_JOINTS];
@@ -89,8 +89,8 @@ void setup() {
 
 void loop() {
 
-  // int read_imu = morsimu_read();
+  int read_imu = morsimu_read();
 
-  // morsdrive_handle(&drive_handler, 0, 200, read_imu);
+  morsdrive_handle(&drive_handler, 0, 200, read_imu);
 
 }
