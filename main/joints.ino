@@ -10,7 +10,7 @@ void morsjoints_init(MorsJoints* j, uint8_t* t_dir_a, uint8_t* t_dir_b, uint8_t*
     j-> dir_b[i] = t_dir_b[i];
     j-> pwm[i]   = t_pwm[i];
     j-> velocita[i] = 0;
-    j-> direzione[i] = LOW;
+    j-> direzione[i] = HIGH;
 
     pinMode(j-> dir_a[i], OUTPUT);
     pinMode(j-> dir_b[i], OUTPUT);
@@ -25,14 +25,20 @@ void morsjoints_setspeed(MorsJoints* j, uint8_t t_joints, int t_vel) {
    */
 
   if(t_vel >= 0) {
+
+    if(j-> velocita[t_joints] > 255) {
+      j-> velocita[t_joints] = 255;
+    }
     j-> velocita[t_joints] = t_vel;
     j-> direzione[t_joints] = HIGH;
+
   } else {
+    
+    if(j-> velocita[t_joints] > 255) {
+      j-> velocita[t_joints] = 255;
+    }
     j-> velocita[t_joints] = !t_vel;
     j-> direzione[t_joints] = LOW;
-  }
-  if(j-> velocita[t_joints] > 255) {
-    j-> velocita[t_joints] = 255;
   }
 }
 
