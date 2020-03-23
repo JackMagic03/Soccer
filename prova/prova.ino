@@ -22,8 +22,13 @@ typedef struct {
  uint8_t dir_b[NUM_JOINTS];
  uint8_t pwm[NUM_JOINTS];
 
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
  uint8_t direzione[NUM_JOINTS];
  uint8_t velocita[NUM_JOINTS];
+=======
+  uint8_t direzione[NUM_JOINTS];
+  uint8_t vel[NUM_JOINTS];
+>>>>>>> Ciao:main/main.ino
 } MorsJoints;
 MorsJoints joints_handler;
 //typedef struct MorsJoints MorsJoints;
