@@ -106,6 +106,7 @@ void setup() {
 void loop() {
 
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
   morslines_read(&line_handler);
 
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
@@ -151,4 +152,10 @@ void loop() {
   morsjoints_handle(&joints_handler, 0);
   morsjoints_setspeed(&joints_handler, 2, 0);
 >>>>>>> ciao:main/main.ino
+=======
+  int read_imu = morsimu_read();
+
+  morsdrive_handle(&drive_handler, 0, 200, read_imu);
+
+>>>>>>> Ciao:main/main.ino
 }
