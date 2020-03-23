@@ -68,12 +68,12 @@ void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
     * quando è stato definito. Più è alto come valore
     * più il robot ruota veloce.
     */
-   d-> d_w = d-> r_w * KW;
+   d-> d_w = (d-> r_w) * KW;
 
-   if(d-> d_w > LIMITE_DW_UP) {
+   if((d-> d_w) > LIMITE_DW_UP) {
      d-> d_w = LIMITE_DW_UP;
    }
-   if(d-> d_w < LIMITE_DW_DOWN) {
+   if((d-> d_w) < LIMITE_DW_DOWN) {
      d-> d_w = LIMITE_DW_DOWN;
    }
 
@@ -82,25 +82,21 @@ void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
     * Si moltiplicano i termini delle matrici con v_x, v_y e d_w.
     */
 
-    d-> vel[0] = d-> matrix [0][0] * d-> v_x +
-                 d-> matrix [0][1] * d-> v_y +
-                 d-> matrix [0][2] * d-> d_w;
+    d-> vel[0] = d-> matrix [0][0] * (d-> v_x) +
+                 d-> matrix [0][1] * (d-> v_y) +
+                 d-> matrix [0][2] * (d-> d_w);
 
-    d-> vel[1] = d-> matrix [1][0] * d-> v_x +
-                 d-> matrix [1][1] * d-> v_y +
-                 d-> matrix [1][2] * d-> d_w;
+    d-> vel[1] = d-> matrix [1][0] * (d-> v_x) +
+                 d-> matrix [1][1] * (d-> v_y) +
+                 d-> matrix [1][2] * (d-> d_w);
 
-    d-> vel[2] = d-> matrix [2][0] * d-> v_x +
-                 d-> matrix [2][1] * d-> v_y +
-                 d-> matrix [2][2] * d-> d_w;
+    d-> vel[2] = d-> matrix [2][0] * (d-> v_x) +
+                 d-> matrix [2][1] * (d-> v_y) +
+                 d-> matrix [2][2] * (d-> d_w);
 
    for (int i = 0; i < NUM_JOINTS; i++) {
-     /**
-      * Passo l'indirizzo del puntatore alla struttura MorsJoints.
-      * È come quando passavo l'indisizzo dell'oggetto della struttura nel main.
-      *
-      * Prima richiamo la funzione setspeed, poi l'handle.
-      */
+
      morsjoints_handle(&joints_handler, i, d-> vel[i]);
+     
    }
 }

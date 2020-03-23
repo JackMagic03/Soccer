@@ -9,8 +9,6 @@ void morsjoints_init(MorsJoints* j, uint8_t* t_dir_a, uint8_t* t_dir_b, uint8_t*
     j-> dir_a[i] = t_dir_a[i];
     j-> dir_b[i] = t_dir_b[i];
     j-> pwm[i]   = t_pwm[i];
-    j-> vel[i] = 0;
-    j-> direzione[i] = HIGH;
 
     pinMode(j-> dir_a[i], OUTPUT);
     pinMode(j-> dir_b[i], OUTPUT);
@@ -26,26 +24,21 @@ void morsjoints_handle(MorsJoints* j, uint8_t t_joints, int t_vel) {
 
   if(t_vel >= 0) {
 
-    if(j-> vel[t_joints] > 255) {
-      j-> vel[t_joints] = 255;
+    if(t_vel > 255) {
+      t_vel = 255;
     }
-    j-> vel[t_joints] = t_vel;
-    j-> direzione[t_joints] = HIGH;
-
-    digitalWrite(j-> dir_a[t_joints], j-> direzione[t_joints]);
-    digitalWrite(j-> dir_b[t_joints], !j-> direzione[t_joints]);
-    analogWrite(j-> pwm[t_joints], j-> vel[t_joints]);
+    digitalWrite(j-> dir_a[t_joints], LOW);
+    digitalWrite(j-> dir_b[t_joints], HIGH);
+    analogWrite(j-> pwm[t_joints], t_vel);
 
   } else {
 
-    if(j-> vel[t_joints] < 255) {
-      j-> vel[t_joints] = 255;
+    if(t_vel < -255) {
+      t_vel = 255;
     }
-    j-> vel[t_joints] = t_vel;
-    j-> direzione[t_joints] = LOW;
 
-    digitalWrite(j-> dir_a[t_joints], j-> direzione[t_joints]);
-    digitalWrite(j-> dir_b[t_joints], !j-> direzione[t_joints]);
-    analogWrite(j-> pwm[t_joints], j-> vel[t_joints]);
+    digitalWrite(j-> dir_a[t_joints], HIGH);
+    digitalWrite(j-> dir_b[t_joints], LOW);
+    analogWrite(j-> pwm[t_joints], t_vel);
   }
 }

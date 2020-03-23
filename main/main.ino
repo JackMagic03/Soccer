@@ -10,12 +10,11 @@
 
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
+  
   uint8_t dir_a[NUM_JOINTS];
   uint8_t dir_b[NUM_JOINTS];
   uint8_t pwm[NUM_JOINTS];
 
-  uint8_t direzione[NUM_JOINTS];
-  uint8_t vel[NUM_JOINTS];
 } MorsJoints;
 MorsJoints joints_handler;
 
@@ -78,6 +77,8 @@ Adafruit_BNO055 bno = Adafruit_BNO055(55);
 
 void setup() {
 
+  Serial.begin(9600);
+
   morsjoints_init(&joints_handler, PIN_DIR_A, PIN_DIR_B, PIN_PWM);
   morsdrive_init(&drive_handler);
 
@@ -88,9 +89,8 @@ void setup() {
 
 void loop() {
 
-  int read_imu = morsimu_read();
-  Serial.println(read_imu);
-  //
+  // int read_imu = morsimu_read();
+
   // morsdrive_handle(&drive_handler, 0, 200, read_imu);
 
 }
