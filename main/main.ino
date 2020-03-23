@@ -68,8 +68,8 @@ const uint8_t PIN_PWM[NUM_JOINTS] = {2, 11, 5};
  *  Ho levato i #define perché dava un problema di conversione da #define a uint8_t* e
  *  tutto il resto dei parametri
  */
-#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-#define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
+// #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+// #define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
 const int SOGLIA_LINEE[NUM_LINES] = {800, 800, 800, 800, 800, 800};
 const uint8_t PIN_LINEE[NUM_LINES] = {A0, A1, A2, A3, A4, A5};
 const int ANGOLI_LINEE[NUM_LINES] = {30, 90, 150, 210, 270, 330};
@@ -97,5 +97,4 @@ void loop() {
     morsjoints_setspeed(&joints_handler, i, 200);
   }
   morsjoints_handle(&joints_handler, 0);
-
 }

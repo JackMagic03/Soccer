@@ -16,9 +16,9 @@ void morslines_init(MorsLines* l, uint8_t* t_pin, int* t_angle, int* t_soglia) {
   l-> escape_angle = LOW;
   l-> flg = LOW;
 
-  sbi(ADCSRA, ADPS2);
-  cbi(ACDSRA, ADPS1);
-  cbi(ACDSRA, ADPS0);
+  // sbi(ADCSRA, ADPS2);
+  // cbi(ACDSRA, ADPS1);
+  // cbi(ACDSRA, ADPS0);
 }
 
 void morslines_reset(MorsLines* l) {
