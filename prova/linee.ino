@@ -5,6 +5,7 @@
  * Lo spiego meglio quando viene richiamata la variabile.
  */
 
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/linee.ino
 typedef struct {
 
   uint8_t pin[NUM_LINES];
@@ -32,6 +33,9 @@ typedef struct {
 } MorsLines;
 
 void morslines_init(MorsLines* l, uint8_t t_pin[], int16_t t_angle[], int t_soglia[]) {
+=======
+void morslines_init(MorsLines* l, uint8_t* t_pin, int* t_angle, int* t_soglia) {
+>>>>>>> Correzione di tutti gli errori:main/lines.ino
 
   for(int i = 0; i < NUM_LINES; i++) {
     l-> pin[i] = t_pin[i];
