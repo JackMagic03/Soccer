@@ -19,6 +19,7 @@
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
  uint8_t dir_a[NUM_JOINTS];
  uint8_t dir_b[NUM_JOINTS];
  uint8_t pwm[NUM_JOINTS];
@@ -32,6 +33,9 @@ typedef struct {
 >>>>>>> Ciao:main/main.ino
 =======
   
+=======
+
+>>>>>>> ciao:main/main.ino
   uint8_t dir_a[NUM_JOINTS];
   uint8_t dir_b[NUM_JOINTS];
   uint8_t pwm[NUM_JOINTS];
@@ -124,6 +128,7 @@ void loop() {
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
   morslines_read(&line_handler);
 
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
@@ -178,6 +183,11 @@ void loop() {
 
 >>>>>>> Ciao:main/main.ino
   // morsdrive_handle(&drive_handler, 0, 200, read_imu);
+=======
+  int read_imu = morsimu_read();
+
+  morsdrive_handle(&drive_handler, 0, 200, read_imu);
+>>>>>>> ciao:main/main.ino
 
 >>>>>>> Ciao:main/main.ino
 }
