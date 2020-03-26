@@ -20,6 +20,7 @@
 typedef struct {
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
  uint8_t dir_a[NUM_JOINTS];
  uint8_t dir_b[NUM_JOINTS];
  uint8_t pwm[NUM_JOINTS];
@@ -42,6 +43,14 @@ typedef struct {
 
 >>>>>>> Ciao:main/main.ino
 } MorsJoints;
+=======
+
+   uint8_t dir_a[NUM_JOINTS];
+   uint8_t dir_b[NUM_JOINTS];
+   uint8_t pwm[NUM_JOINTS];
+
+ } MorsJoints;
+>>>>>>> Aggiunto il pid controller alla bussola:main/main.ino
 MorsJoints joints_handler;
 //typedef struct MorsJoints MorsJoints;
 
@@ -68,9 +77,9 @@ typedef struct {
   int raw_data[NUM_LINES];
   uint8_t data[NUM_LINES];
   /**
-   * Le due variabili raw_data e data sono gli array che salvano i valori che leggono i sensori;
-   *
-   * raw_data salva le letture grezze dei sensori, data ha solo valori 0 o 1, se sono state rilevare linee o meno
+   * Le due variabili raw_data e data sono gli array che salvano i valori che leggono i sensori:
+   *    => raw_data salva le letture grezze dei sensori;
+   *    => data ha solo valori 0 o 1, se sono state rilevare linee o meno.
    */
   uint8_t mask[NUM_LINES];
   /**
@@ -87,6 +96,20 @@ typedef struct {
 } MorsLines;
 MorsLines line_handler;
 
+typedef struct {
+  int heading;  //L'asse x
+  float set_point, input, output;
+
+  float k_p, k_i, k_d;
+  float error, prev_error, tot_error;
+
+  float d_t, id_t;
+  //    0.01, 100
+
+  Adafruit_BNO055* imu_ptr;
+} MorsImu;
+MorsImu imu_handler;
+
 const uint8_t PIN_DIR_A[NUM_JOINTS] = {4, 13, 7};
 const uint8_t PIN_DIR_B[NUM_JOINTS] = {3, 12, 6};
 const uint8_t PIN_PWM[NUM_JOINTS] = {2, 11, 5};
@@ -102,11 +125,21 @@ const int ANGOLI_LINEE[NUM_LINES] = {30, 90, 150, 210, 270, 330};
 >>>>>>> Correzione di tutti gli errori:main/main.ino
 
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 =======
 MorsDrive drive_handler;
 MorsJoints joints_handler;
 >>>>>>> Ciao:main/main.ino
 MorsLines line_handler;
+=======
+const float K_P = 0;
+const float K_I = 0;
+const float K_D = 0;
+const float D_T = 0.01;
+const float ID_T = 100;
+
+Adafruit_BNO055 bno = Adafruit_BNO055(55);
+>>>>>>> Aggiunto il pid controller alla bussola:main/main.ino
 
 void setup() {
 
@@ -120,11 +153,12 @@ void setup() {
 >>>>>>> Ciao:main/main.ino
   morslines_init(&line_handler, PIN_LINEE, ANGOLI_LINEE, SOGLIA_LINEE);
 
-  morsimu_init();
+  morsimu_init(&imu_handler, &bno, K_P, K_I, K_D, D_T, ID_T);
 }
 
 void loop() {
 
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
@@ -188,6 +222,12 @@ void loop() {
 
   morsdrive_handle(&drive_handler, 0, 200, read_imu);
 >>>>>>> ciao:main/main.ino
+=======
+  morsimu_read(&imu_handler);
+  morsimu_handle(&imu_handler);
+
+  morsdrive_handle(&drive_handler, 0, 200, morsimu_getOutput(&imu_handler));
+>>>>>>> Aggiunto il pid controller alla bussola:main/main.ino
 
 >>>>>>> Ciao:main/main.ino
 }
