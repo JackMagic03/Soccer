@@ -2,6 +2,8 @@
  * joints.ino => Creare le funzioni per il drive che gestiscono i motori fisici
  * @author Massimo Giordano
  */
+#define MAX_VEL 255
+#define MAX_THRESHOLD 20
 
 void morsjoints_init(MorsJoints* j, uint8_t* t_dir_a, uint8_t* t_dir_b, uint8_t* t_pwm) {
 
@@ -24,21 +26,21 @@ void morsjoints_handle(MorsJoints* j, uint8_t t_joints, int t_vel) {
 
   if(t_vel >= 0) {
 
-    if(t_vel > 255) {
-      t_vel = 255;
-    }
     digitalWrite(j-> dir_a[t_joints], LOW);
     digitalWrite(j-> dir_b[t_joints], HIGH);
-    analogWrite(j-> pwm[t_joints], t_vel);
 
   } else {
-
-    if(t_vel < -255) {
-      t_vel = 255;
-    }
+    t_vel = -t_vel;
 
     digitalWrite(j-> dir_a[t_joints], HIGH);
     digitalWrite(j-> dir_b[t_joints], LOW);
-    analogWrite(j-> pwm[t_joints], t_vel);
+
   }
+  if(t_vel > MAX_VEL) {
+    t_vel = MAX_VEL;
+  }
+  if(t_vel < MAX_THRESHOLD) {
+    t_vel = 0;
+  }
+  analogWrite(j-> pwm[t_joints], t_vel);
 }

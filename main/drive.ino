@@ -10,6 +10,7 @@
 #define LIMITE_DW_DOWN -70.0
 
 #define KW 3.0
+#define OFFSET_ANGLE 270
 
 float morsdrive_radianti(float t_gradi) {
   /**
@@ -39,7 +40,7 @@ void morsdrive_init(MorsDrive* d) {
   }
 }
 
-void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
+void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, float t_imu) {
   /**
    * Impostare la velocità per ogni singolo motore
    * dati angolo e velocità finale a cui il robot
@@ -50,32 +51,8 @@ void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
    * perché tutti i componenti elettronici del robot ragionano in radianti,
    * tranne la bussola ma in questo caso non importa.
    */
-   d-> v_x = t_vel * sin(morsdrive_radianti(t_angle - 270));
-   d-> v_y = t_vel * cos(morsdrive_radianti(t_angle - 270));
-
-   /**
-    * Questo passagio serve per portare la lettura della bussola
-    * da 0 % 360 a -180 % +180
-    */
-   if(t_imu < 180) {
-     d-> r_w = t_imu;
-   } else {
-     d-> r_w = t_imu - 360;
-   }
-
-   /**
-    * KW è la costante rotativa del robot. È un termine che va regolato
-    * quando è stato definito. Più è alto come valore
-    * più il robot ruota veloce.
-    */
-   d-> d_w = (d-> r_w) * KW;
-
-   if((d-> d_w) > LIMITE_DW_UP) {
-     d-> d_w = LIMITE_DW_UP;
-   }
-   if((d-> d_w) < LIMITE_DW_DOWN) {
-     d-> d_w = LIMITE_DW_DOWN;
-   }
+   d-> v_x = t_vel * sin(morsdrive_radianti(t_angle - OFFSET_ANGLE));
+   d-> v_y = t_vel * cos(morsdrive_radianti(t_angle - OFFSET_ANGLE));
 
    /**
     * Il vero e proprio calcolo delle velocità.
@@ -84,15 +61,15 @@ void morsdrive_handle(MorsDrive* d, float t_angle, int t_vel, int t_imu) {
 
     d-> vel[0] = d-> matrix [0][0] * (d-> v_x) +
                  d-> matrix [0][1] * (d-> v_y) +
-                 d-> matrix [0][2] * (d-> d_w);
+                 d-> matrix [0][2] * (t_imu);
 
     d-> vel[1] = d-> matrix [1][0] * (d-> v_x) +
                  d-> matrix [1][1] * (d-> v_y) +
-                 d-> matrix [1][2] * (d-> d_w);
+                 d-> matrix [1][2] * (t_imu);
 
     d-> vel[2] = d-> matrix [2][0] * (d-> v_x) +
                  d-> matrix [2][1] * (d-> v_y) +
-                 d-> matrix [2][2] * (d-> d_w);
+                 d-> matrix [2][2] * (t_imu);
 
    for (int i = 0; i < NUM_JOINTS; i++) {
 
