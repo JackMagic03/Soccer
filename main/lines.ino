@@ -69,7 +69,7 @@ void morslines_handle(MorsLines* l) {
     l-> timer --;
 
     if(l-> timer == 0) {
-      morslines_reset(&line_handler);
+      morslines_reset(l); 
     }
   }
 }

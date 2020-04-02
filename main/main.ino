@@ -3,10 +3,12 @@
  * @author Massimo Giordano
  */
 
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
-#include <utility/imumaths.h>
+ #include <Wire.h>
+ #include <Adafruit_Sensor.h>
+ #include <Adafruit_BNO055.h>
+ #include <utility/imumaths.h>
+ #include <Pixy2.h>
+ #include <Math.h>
 
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
@@ -74,6 +76,19 @@ typedef struct {
 } MorsImu;
 MorsImu imu_handler;
 
+typedef struct {
+  uint8_t get_blocks;
+  uint8_t num_blocks;
+  uint8_t heading_x;
+  uint8_t heading_y;
+
+  uint8_t flg;
+  uint8_t bit;
+
+  Pixy2* pixy_ptr;
+} MorsPixy;
+MorsPixy pixy_handler;
+
 const uint8_t PIN_DIR_A[NUM_JOINTS] = {4, 13, 7};
 const uint8_t PIN_DIR_B[NUM_JOINTS] = {3, 12, 6};
 const uint8_t PIN_PWM[NUM_JOINTS] = {2, 11, 5};
@@ -94,6 +109,7 @@ const float D_T = 0.01;
 const float ID_T = 100;
 
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
+Pixy2 pixy;
 
 void setup() {
 
@@ -105,13 +121,39 @@ void setup() {
   morslines_init(&line_handler, PIN_LINEE, ANGOLI_LINEE, SOGLIA_LINEE);
 
   morsimu_init(&imu_handler, &bno, K_P, K_I, K_D, D_T, ID_T);
+
+  pixy.init();
+  morspixy_init(&pixy_handler, &pixy);
 }
 
 void loop() {
+  MorsLines* l;
+  MorsPixy* p;
 
-  morsimu_read(&imu_handler);
   morsimu_handle(&imu_handler);
+  /**
+   * La bussola fa le letture ed esegue il suo pid
+   * Ho inserito la lettura nella handle
+   */
+  morslines_read(&line_handler);
+  morslines_handle(&line_handler);
+  /**
+   * Le linee leggono se ci sono bianchi e si calcolano
+   * l'angolo di uscita del robot
+   */
+  morspixy_read(&pixy_handler);
+  morspixy_handle(&pixy_handler);
+  /**
+   * Ho inserito il test della pixy nella funzione di handle
+   * Legge se vede blocchi. Se così agisce di conseguenza
+   */
 
-  morsdrive_handle(&drive_handler, 0, 200, morsimu_getOutput(&imu_handler));
-
+  if(l-> flg == HIGH) {
+    morsdrive_handle(&drive_handler, l-> escape_angle, 200, morsimu_getOutput(&imu_handler));
+  }
+  else if(p-> flg == HIGH) {
+    /**
+     * Fa le robe della Handle
+     */
+  }
 }
