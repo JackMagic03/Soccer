@@ -30,13 +30,14 @@ void morsimu_read(MorsImu* c) {
 
   imu::Vector<3> euler = c-> imu_ptr-> getVector(Adafruit_BNO055::VECTOR_EULER);
   c-> heading = euler.x();
+
+  if(c-> heading > 180) {
+    c-> heading -= 360;
+  }
   /**
    * Questo passagio serve per portare la lettura della bussola
    * da 0 % 360 a -180 % +180
    */
-  if(c-> heading > 180) {
-    c-> heading -= 360;
-  }
 }
 
 void morsimu_handle(MorsImu* c) {

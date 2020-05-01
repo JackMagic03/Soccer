@@ -60,6 +60,7 @@ void morspixy_test(MorsPixy* p) {
 
 void morspixy_handle(MorsPixy* p) {
 
+  morspixy_read(p);
   morspixy_test(p);
   /**
    * Fa robe

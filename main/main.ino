@@ -3,12 +3,12 @@
  * @author Massimo Giordano
  */
 
- #include <Wire.h>
- #include <Adafruit_Sensor.h>
- #include <Adafruit_BNO055.h>
- #include <utility/imumaths.h>
- #include <Pixy2.h>
- #include <Math.h>
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+#include <Pixy2.h>
+#include <Math.h>
 
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
 typedef struct {
@@ -39,7 +39,7 @@ MorsDrive drive_handler;
 #define NUM_LINES 6           //Sono i sensori di linea che abbiamo.
 typedef struct {
   uint8_t pin[NUM_LINES];
-  int16_t angoli[NUM_LINES];
+  int16_t angole[NUM_LINES];
   int raw_data[NUM_LINES];
   uint8_t data[NUM_LINES];
   /**
@@ -135,7 +135,6 @@ void loop() {
    * La bussola fa le letture ed esegue il suo pid
    * Ho inserito la lettura nella handle
    */
-  morslines_read(&line_handler);
   morslines_handle(&line_handler);
   /**
    * Le linee leggono se ci sono bianchi e si calcolano
