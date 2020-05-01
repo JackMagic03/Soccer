@@ -39,7 +39,7 @@ void morslines_init(MorsLines* l, uint8_t* t_pin, int* t_angle, int* t_soglia) {
 
   for(int i = 0; i < NUM_LINES; i++) {
     l-> pin[i] = t_pin[i];
-    l-> angoli[i] = t_angle[i];
+    l-> angole[i] = t_angle[i];
     l-> soglia[i] = t_soglia[i];
   }
   l-> tot_angle = LOW;
@@ -80,6 +80,8 @@ void morslines_read(MorsLines* l) {
 
 void morslines_handle(MorsLines* l) {
 
+  morslines_read(l);
+
   for(int i = 0; i < NUM_LINES; i++) {
 
     if(l-> mask[i] == LOW) {
@@ -87,7 +89,7 @@ void morslines_handle(MorsLines* l) {
       if(l-> data[i] == HIGH) {
 
         l-> mask[i] = HIGH;
-        l-> tot_angle = l-> tot_angle + l-> angoli[i];
+        l-> tot_angle = l-> tot_angle + l-> angole[i];
         l-> flg = HIGH;
         l-> timer = DEFAULT_TIMER;
         l-> num_angle ++;
@@ -100,7 +102,11 @@ void morslines_handle(MorsLines* l) {
     l-> timer --;
 
     if(l-> timer == 0) {
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/linee.ino
       morslines_reset();
+=======
+      morslines_reset(l);
+>>>>>>> ciao:main/lines.ino
     }
   }
 }

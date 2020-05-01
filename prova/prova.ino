@@ -14,6 +14,11 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+=======
+#include <Pixy2.h>
+#include <Math.h>
+>>>>>>> ciao:main/main.ino
 
 >>>>>>> Ciao:main/main.ino
 #define NUM_JOINTS 3          //Sono i motori che abbiamo
@@ -73,7 +78,7 @@ MorsDrive drive_handler;
 #define NUM_LINES 6           //Sono i sensori di linea che abbiamo.
 typedef struct {
   uint8_t pin[NUM_LINES];
-  int16_t angoli[NUM_LINES];
+  int16_t angole[NUM_LINES];
   int raw_data[NUM_LINES];
   uint8_t data[NUM_LINES];
   /**
@@ -163,10 +168,18 @@ void loop() {
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+<<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
   morslines_read(&line_handler);
 
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
 <<<<<<< 5959a9e17b3489e5aef1395a13f21964189fb597:prova/prova.ino
+=======
+  morsimu_handle(&imu_handler);
+  /**
+   * La bussola fa le letture ed esegue il suo pid
+   * Ho inserito la lettura nella handle
+   */
+>>>>>>> ciao:main/main.ino
   morslines_handle(&line_handler);
 =======
   // morsdrive_setspeed(&drive_handler, 0, 200, read_imu);
