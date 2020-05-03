@@ -66,3 +66,7 @@ void morspixy_handle(MorsPixy* p) {
    * Fa robe
    */
 }
+
+/**
+ * creare una funzione di reset
+ */

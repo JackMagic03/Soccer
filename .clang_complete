@@ -1,5 +1,6 @@
 -IC:/Users/bombe/Desktop/Soccer/include
 -IC:/Users/bombe/Desktop/Soccer/src
+-IC:/Users/bombe/Desktop/Soccer/lib/joints
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/cores/arduino
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/variants/mega
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src

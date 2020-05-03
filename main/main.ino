@@ -124,6 +124,7 @@ void setup() {
 
   pixy.init();
   morspixy_init(&pixy_handler, &pixy);
+  
 }
 
 void loop() {
@@ -140,7 +141,6 @@ void loop() {
    * Le linee leggono se ci sono bianchi e si calcolano
    * l'angolo di uscita del robot
    */
-  morspixy_read(&pixy_handler);
   morspixy_handle(&pixy_handler);
   /**
    * Ho inserito il test della pixy nella funzione di handle

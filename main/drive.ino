@@ -28,7 +28,7 @@ float morsdrive_gradi(float t_rad) {
 
 void morsdrive_init(MorsDrive* d) {
   /**
-   * Inizializzare i valori della matrice;
+   * Inizializziamo le variabili del drive
    */
   d-> v_x = 0;
   d-> v_y = 0;
