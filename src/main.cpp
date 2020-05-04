@@ -4,12 +4,10 @@
  */
 
 #include <Arduino.h>
-#include "joints.hpp"
-#include "drive.hpp"
-#include "lines.hpp"
+#include "globals.hpp"
 
 void setup() {
-
+  Serial.begin(9600);
 }
 
 void loop() {

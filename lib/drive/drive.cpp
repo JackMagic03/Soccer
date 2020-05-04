@@ -5,9 +5,9 @@
 
 #include "drive.hpp"
 
-Drive::Drive(): joint_1(1,2,3),
-                joint_2(4,5,6),
-                joint_3(7,8,9) {
+Drive::Drive(): joint_1(PIN_DIR_A[0], PIN_DIR_B[0], PIN_PWM[0]),
+                joint_2(PIN_DIR_A[1], PIN_DIR_B[1], PIN_PWM[1]),
+                joint_3(PIN_DIR_A[2], PIN_DIR_B[2], PIN_PWM[2]) {
   /**
    * Inizializziamo le variabili del drive
    */
@@ -35,7 +35,7 @@ float Drive::radianti(float t_gradi) {
   return (t_gradi * PI / 180.0);
 }
 
-void Drive::setSpeed(float t_angle, int t_vel, float t_imu) {
+void Drive::handle(float t_angle, int t_vel, float t_imu) {
   /**
    * Impostare la velocità per ogni singolo motore
    * dati angolo e velocità finale a cui il robot
@@ -70,10 +70,8 @@ void Drive::setSpeed(float t_angle, int t_vel, float t_imu) {
     joint_1.setSpeed(vel[0]);
     joint_2.setSpeed(vel[1]);
     joint_3.setSpeed(vel[2]);
-}
 
-void Drive::handle() {
-  joint_1.handle();
-  joint_2.handle();
-  joint_3.handle();
+    joint_1.handle();
+    joint_2.handle();
+    joint_3.handle();
 }

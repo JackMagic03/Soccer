@@ -33,6 +33,5 @@ public:
 
   static float gradi(float t_rad);      //Funzione che restituisce i gradi
   static float radianti(float t_gradi); //Funzione che restituisce i radianti
-  void setSpeed(float t_angle, int t_vel, float t_imu); //La setSpeed che calcola le velocita con le matrici
-  void handle(); //La handle che dice ai singoli motori di muoversi
+  void handle(float t_angle, int t_vel, float t_imu); //La handle che dice ai singoli motori di muoversi
 };
