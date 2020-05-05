@@ -11,10 +11,6 @@ Imu::Imu(): bno(55) {
   heading = 0;
 }
 
-void Imu::init() {
-
-}
-
 void Imu::read() {
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
   heading = euler.x();  //Lettura dell'asse x

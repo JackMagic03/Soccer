@@ -18,6 +18,6 @@ class Joints {
 public:
   Joints();
 
-  void init(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm);
+  void init(uint8_t* t_pin_a, uint8_t* t_pin_b, uint8_t* t_pin_pwm);
   void handle(int t_velocita);
 };

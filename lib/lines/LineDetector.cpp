@@ -5,15 +5,6 @@
 
 #include "lineDetector.hpp"
 
-LineDetector::LineDetector(uint8_t* t_pin, int16_t* t_angle, int* t_soglia) {
-  pin = *t_pin;
-  angle = *t_angle;
-  soglia = *t_soglia;
-
-  raw_data = 0;
-  data = 0;
-}
-
 LineDetector::LineDetector() {
   pin = 0;
   angle = 0;

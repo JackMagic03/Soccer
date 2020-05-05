@@ -12,8 +12,6 @@ class Drive {
    * Sto di cendo che esistono 3 oggetti per i motori.
    * Vengono dichiarati nel drive.cpp
    */
-  Joints joint_component[NUM_JOINTS];
-
   double matrix [NUM_JOINTS][NUM_JOINTS] =
   {
     {0.87, 0.50, 1}, //sin T1, cos T1, 1
@@ -27,6 +25,8 @@ class Drive {
   float d_w;       //Velocità angolare
   float r_w;       //Il terzo componente del calcolo della matrice. Usato per la correzione della direzione;
 public:
+  Joints joint_component[NUM_JOINTS];
+  
   Drive();
 
   static float gradi(float t_rad);      //Funzione che restituisce i gradi
