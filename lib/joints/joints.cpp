@@ -7,10 +7,10 @@
 #include "config.hpp"
 
 Joints::Joints() {
-  
+
 }
 
-void Joints::init(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm) {
+void Joints::init(uint8_t* t_pin_a, uint8_t* t_pin_b, uint8_t* t_pin_pwm) {
 
   pin_a = t_pin_a;
   pin_b = t_pin_b;

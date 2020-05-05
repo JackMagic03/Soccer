@@ -20,7 +20,6 @@ class LineDetector {
 public:
   uint8_t data;
   int16_t angle;
-  LineDetector(uint8_t* t_pin, int16_t* t_angle, int* t_soglia);
   LineDetector();
 
   void init(uint8_t* t_pin, int16_t* t_angle, int* t_soglia);

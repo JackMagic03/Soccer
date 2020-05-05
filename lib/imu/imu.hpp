@@ -16,7 +16,6 @@ class Imu {
 public:
   Imu();
 
-  void init();
   void read();
   int getHeading();
 };

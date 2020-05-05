@@ -10,7 +10,7 @@ Drive::Drive() {
    * Inizializziamo le variabili del drive
    */
   for(int i = 0; i < NUM_JOINTS; i++) {
-
+    
     joint_component[i].init(PIN_DIR_A[i], PIN_DIR_B[i], PIN_PWM[i]);
   }
 

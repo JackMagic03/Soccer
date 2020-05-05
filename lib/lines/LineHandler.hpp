@@ -7,8 +7,6 @@
 #include "lineDetector.hpp"
 
 class LineHandler {
-  LineDetector detector_vect[NUM_LINES];
-
   int16_t angle[NUM_LINES];
   uint8_t mask[NUM_LINES];
   /**
@@ -23,9 +21,11 @@ class LineHandler {
    int escape_angle;   //La traiettoria calcolata dalla media dei vettori dagli angoli dei sensori
 
 public:
+  LineDetector line_vect[NUM_LINES];
+  
   LineHandler();
 
   void reset();
-  void moveData();
   void handle();
+  int getEscapeAngle();
 };
