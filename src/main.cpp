@@ -8,6 +8,8 @@
 
 void setup() {
   Serial.begin(9600);
+
+  imu_handler.imu_component.init(&bno);
 }
 
 void loop() {

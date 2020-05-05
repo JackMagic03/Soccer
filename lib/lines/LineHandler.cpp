@@ -3,7 +3,7 @@
  * #author Massimo Giordano
  */
 
-#include "LineHandler.hpp"
+#include "lineHandler.hpp"
 
 LineHandler::LineHandler() {
 

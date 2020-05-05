@@ -4,7 +4,7 @@
  */
 
 #pragma once
-#include "LineDetector.hpp"
+#include "lineDetector.hpp"
 
 class LineHandler {
   LineDetector detector_vect[NUM_LINES];

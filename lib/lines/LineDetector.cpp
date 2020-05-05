@@ -3,7 +3,7 @@
  * #author Massimo Giordano
  */
 
-#include "LineDetector.hpp"
+#include "lineDetector.hpp"
 
 LineDetector::LineDetector(uint8_t* t_pin, int16_t* t_angle, int* t_soglia) {
   pin = *t_pin;

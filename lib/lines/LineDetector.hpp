@@ -25,5 +25,4 @@ public:
 
   void init(uint8_t* t_pin, int16_t* t_angle, int* t_soglia);
   uint8_t read();
-
 };

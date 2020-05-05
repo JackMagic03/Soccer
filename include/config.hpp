@@ -28,3 +28,12 @@ const uint8_t PIN_PWM[NUM_JOINTS] = {2, 11, 5};
 const int SOGLIA_LINEE[NUM_LINES] = {800, 800, 800, 800, 800, 800};
 const uint8_t PIN_LINEE[NUM_LINES] = {A0, A1, A2, A3, A4, A5};
 const int16_t ANGOLI_LINEE[NUM_LINES] = {30, 90, 150, 210, 270, 330};
+
+const float K_P = 0.0;
+const float K_I = 0.0;
+const float K_D = 0.0;
+const float D_T = 0.01;
+const float ID_T = 100;
+
+#define MAX_OUTPUT 255  //L'output del PID della bussola
+#define MIN_OUTPUT -255
