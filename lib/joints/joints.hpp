@@ -16,8 +16,8 @@ class Joints {
   uint8_t direzione;
 
 public:
-  Joints(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm);
+  Joints();
 
-  void setSpeed(int t_velocita);
-  void handle();
+  void init(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm);
+  void handle(int t_velocita);
 };

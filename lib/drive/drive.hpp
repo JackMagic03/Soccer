@@ -12,9 +12,7 @@ class Drive {
    * Sto di cendo che esistono 3 oggetti per i motori.
    * Vengono dichiarati nel drive.cpp
    */
-  Joints joint_1;
-  Joints joint_2;
-  Joints joint_3;
+  Joints joint_component[NUM_JOINTS];
 
   double matrix [NUM_JOINTS][NUM_JOINTS] =
   {

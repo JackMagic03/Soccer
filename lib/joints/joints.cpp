@@ -6,7 +6,11 @@
 #include "joints.hpp"
 #include "config.hpp"
 
-Joints::Joints(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm) {
+Joints::Joints() {
+  
+}
+
+void Joints::init(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm) {
 
   pin_a = t_pin_a;
   pin_b = t_pin_b;
@@ -20,7 +24,7 @@ Joints::Joints(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm) {
   pinMode(pin_pwm, OUTPUT);
 }
 
-void Joints::setSpeed(int t_velocita) {
+void Joints::handle(int t_velocita) {
   if(t_velocita >= 0) {
     velocita = t_velocita;
     direzione = LOW;
@@ -34,9 +38,7 @@ void Joints::setSpeed(int t_velocita) {
   if(velocita < MAX_THRESHOLD) {
     velocita = 0;
   }
-}
 
-void Joints::handle() {
   digitalWrite(pin_a, direzione);
   digitalWrite(pin_b, !direzione);
   analogWrite(pin_pwm, velocita);
