@@ -50,9 +50,9 @@ void Drive::handle(float t_angle, int t_vel, float t_imu) {
    * tranne la bussola ma in questo caso non importa.
    */
   v_x = t_vel * sin(//Drive::radianti(t_angle - OFFSET_ANGLE));
-                   t_angle);
+                    t_angle);
   v_y = t_vel * cos(//Drive::radianti(t_angle - OFFSET_ANGLE));
-                   t_angle);
+                    t_angle);
 
    /**
     * Il vero e proprio calcolo delle velocità.

@@ -11,11 +11,12 @@
 #include <Math.h>
 
 class Imu {
-public:
-  Adafruit_BNO055* imu_ptr;
+  Adafruit_BNO055 bno;
   int heading;
-
+public:
   Imu();
-  void init(Adafruit_BNO055* t_imu_ptr);
+
+  void init();
   void read();
+  int getHeading();
 };

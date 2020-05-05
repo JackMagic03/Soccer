@@ -30,7 +30,7 @@ void Imu_PID::handle() {
   /**
    * Calcolo dell'errore
    */
-  error = set_point - imu_component.heading;
+  error = set_point - imu_component.getHeading();
   /**
    * Moltiplico la variabile errore per il tempo per non far aumentare troppo
    * la variabile accumulatore.

@@ -13,5 +13,3 @@
 extern Drive drive_handler;
 extern LineHandler line_handler;
 extern Imu_PID imu_handler;
-
-extern Adafruit_BNO055 bno;
