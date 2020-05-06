@@ -3,9 +3,9 @@
  * #author Massimo Giordano
  */
 
-#include "lineDetector.hpp"
+#include "line.hpp"
 
-LineDetector::LineDetector() {
+Line::Line() {
   pin = 0;
   angle = 0;
   soglia = 0;
@@ -14,7 +14,7 @@ LineDetector::LineDetector() {
   data = 0;
 }
 
-void LineDetector::init(uint8_t* t_pin, int16_t* t_angle, int* t_soglia) {
+void Line::init(uint8_t* t_pin, int16_t* t_angle, int* t_soglia) {
   pin = *t_pin;
   angle = *t_angle;
   soglia = *t_soglia;
@@ -23,7 +23,7 @@ void LineDetector::init(uint8_t* t_pin, int16_t* t_angle, int* t_soglia) {
   data = 0;
 }
 
-uint8_t LineDetector::read() {
+uint8_t Line::read() {
   raw_data = analogRead(pin);
 
   if(raw_data >= soglia) {

@@ -4,7 +4,7 @@
  */
 
 #pragma once
-#include "lineDetector.hpp"
+#include "line.hpp"
 
 class LineHandler {
   int16_t angle[NUM_LINES];
@@ -21,8 +21,8 @@ class LineHandler {
    int escape_angle;   //La traiettoria calcolata dalla media dei vettori dagli angoli dei sensori
 
 public:
-  LineDetector line_vect[NUM_LINES];
-  
+  Line line_vect[NUM_LINES];
+
   LineHandler();
 
   void reset();

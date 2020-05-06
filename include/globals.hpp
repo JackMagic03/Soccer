@@ -8,6 +8,7 @@
 #include "drive.hpp"
 #include "lineHandler.hpp"
 #include "PID_controller.hpp"
+#include "pixyHandler.hpp"
 #include "config.hpp"
 #include <SPI.h>
 

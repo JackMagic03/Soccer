@@ -9,9 +9,10 @@
 -I/Users/massimogiordano/.platformio/lib/Adafruit Unified Sensor_ID31
 -I/Users/massimogiordano/.platformio/lib/Adafruit BusIO_ID6214
 -I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/Wire/src
+-I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/SPI/src
 -I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/cores/arduino
 -I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/variants/mega
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/SPI/src
+-I/Users/massimogiordano/Desktop/Soccer/lib/pixy
 -I/Users/massimogiordano/.platformio/lib/Adafruit Circuit Playground_ID602
 -I/Users/massimogiordano/.platformio/lib/Adafruit Circuit Playground_ID602/utility
 -I/Users/massimogiordano/.platformio/lib/MFRC522_ID63/src

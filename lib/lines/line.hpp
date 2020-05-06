@@ -7,7 +7,7 @@
 #include "config.hpp"
 #include <Arduino.h>
 
-class LineDetector {
+class Line {
   uint8_t pin;
   int raw_data;
   /**
@@ -20,7 +20,7 @@ class LineDetector {
 public:
   uint8_t data;
   int16_t angle;
-  LineDetector();
+  Line();
 
   void init(uint8_t* t_pin, int16_t* t_angle, int* t_soglia);
   uint8_t read();
