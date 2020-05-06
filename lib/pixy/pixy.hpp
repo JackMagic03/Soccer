@@ -19,5 +19,5 @@ public:
   void read();
   uint8_t getGetBlocks();
   uint8_t getNumBlocks();
-  uint8_t getFlg();
+  uint8_t getFlg(); 
 };
