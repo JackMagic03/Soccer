@@ -6,7 +6,7 @@
 
 #include <Pixy2.h>
 #include <Wire.h>
-
+extern Pixy2 pixy;
 class Pixy {
   uint8_t get_blocks;
   uint8_t num_blocks;
@@ -14,8 +14,6 @@ class Pixy {
   uint8_t flg;
 
 public:
-  Pixy2 pixy;
-
   Pixy();
 
   void read();

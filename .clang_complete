@@ -1,34 +1,44 @@
--I/Users/massimogiordano/Desktop/Soccer/include
--I/Users/massimogiordano/Desktop/Soccer/src
--I/Users/massimogiordano/Desktop/Soccer/lib/lines
--I/Users/massimogiordano/Desktop/Soccer/lib/joints
--I/Users/massimogiordano/Desktop/Soccer/lib/imu
--I/Users/massimogiordano/.platformio/lib/Adafruit BNO055_ID506
--I/Users/massimogiordano/.platformio/lib/Adafruit BNO055_ID506/utility
--I/Users/massimogiordano/.platformio/lib/Adafruit ADXL343_ID6117
--I/Users/massimogiordano/.platformio/lib/Adafruit Unified Sensor_ID31
--I/Users/massimogiordano/.platformio/lib/Adafruit BusIO_ID6214
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/Wire/src
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/SPI/src
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/cores/arduino
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/variants/mega
--I/Users/massimogiordano/Desktop/Soccer/lib/pixy
--I/Users/massimogiordano/.platformio/lib/Adafruit Circuit Playground_ID602
--I/Users/massimogiordano/.platformio/lib/Adafruit Circuit Playground_ID602/utility
--I/Users/massimogiordano/.platformio/lib/MFRC522_ID63/src
--I/Users/massimogiordano/.platformio/lib/RF24_ID433
--I/Users/massimogiordano/.platformio/lib/RF24_ID433/utility
--I/Users/massimogiordano/.platformio/lib/SPIFlash_ID125
--I/Users/massimogiordano/.platformio/lib/TFT_eSPI_ID1559
--I/Users/massimogiordano/.platformio/lib/TMCStepper_ID5513/src
--I/Users/massimogiordano/.platformio/lib/pixy2_ID7108/src
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/HID/src
--I/Users/massimogiordano/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src
--I/Users/massimogiordano/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
--I/Users/massimogiordano/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
--I/Users/massimogiordano/.platformio/packages/toolchain-atmelavr/avr/include
--I/Users/massimogiordano/.platformio/packages/tool-unity
+-IC:/Users/bombe/Desktop/Calciatore/include
+-IC:/Users/bombe/Desktop/Calciatore/src
+-IC:/Users/bombe/Desktop/Calciatore/lib/pixy
+-IC:/Users/bombe/.platformio/lib/Pixy2
+-IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/SPI/src
+-IC:/Users/bombe/Desktop/Calciatore/lib/imu
+-IC:/Users/bombe/.platformio/lib/Adafruit_BNO055-master
+-IC:/Users/bombe/.platformio/lib/Adafruit_BNO055-master/utility
+-IC:/Users/bombe/.platformio/lib/Adafruit_ADXL343
+-IC:/Users/bombe/.platformio/lib/Adafruit_Unified_Sensor
+-IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/Wire/src
+-IC:/Users/bombe/Desktop/Calciatore/lib/lines
+-IC:/Users/bombe/Desktop/Calciatore/lib/joints
+-IC:/Users/bombe/.platformio/packages/framework-arduino-avr/cores/arduino
+-IC:/Users/bombe/.platformio/packages/framework-arduino-avr/variants/mega
+-IC:/Users/bombe/.platformio/lib/Adafruit_Circuit_Playground
+-IC:/Users/bombe/.platformio/lib/Adafruit_Circuit_Playground/utility
+-IC:/Users/bombe/.platformio/lib/Arduino_LSM9DS1/src
+-IC:/Users/bombe/.platformio/lib/DHT
+-IC:/Users/bombe/.platformio/lib/DHT 2
+-IC:/Users/bombe/.platformio/lib/DS3231
+-IC:/Users/bombe/.platformio/lib/HC-SR04
+-IC:/Users/bombe/.platformio/lib/IRremote
+-IC:/Users/bombe/.platformio/lib/Keypad
+-IC:/Users/bombe/.platformio/lib/Keypad/utility
+-IC:/Users/bombe/.platformio/lib/LedControl
+-IC:/Users/bombe/.platformio/lib/LiquidCrystal/src
+-IC:/Users/bombe/.platformio/lib/MPU6050
+-IC:/Users/bombe/.platformio/lib/SD/src
+-IC:/Users/bombe/.platformio/lib/Servo/src
+-IC:/Users/bombe/.platformio/lib/SpacebrewYun/src
+-IC:/Users/bombe/.platformio/lib/Stepper/src
+-IC:/Users/bombe/.platformio/lib/arduino_495935/src
+-IC:/Users/bombe/.platformio/lib/pitches
+-IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src
+-IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/HID/src
+-IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src
+-IC:/Users/bombe/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include
+-IC:/Users/bombe/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
+-IC:/Users/bombe/.platformio/packages/toolchain-atmelavr/avr/include
+-IC:/Users/bombe/.platformio/packages/tool-unity
 -DPLATFORMIO=40303
 -DARDUINO_AVR_MEGA2560
 -DF_CPU=16000000L

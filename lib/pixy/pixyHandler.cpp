@@ -16,18 +16,18 @@ void PixyHandler::test() {
 
     for(int i = 0; i < pixy_component.getNumBlocks(); i++) {
 
-      if(pixy_component.pixy.ccc.blocks[i].m_signature == 0) {
+      if(pixy.ccc.blocks[i].m_signature == 0) {
 
-        heading_x = pixy_component.pixy.ccc.blocks[i].m_x;
-        heading_y = pixy_component.pixy.ccc.blocks[i].m_y;
+        heading_x = pixy.ccc.blocks[i].m_x;
+        heading_y = pixy.ccc.blocks[i].m_y;
 
         bitSet(bit, 0);
       }
-      if(pixy_component.pixy.ccc.blocks[i].m_signature == 1) {
+      if(pixy.ccc.blocks[i].m_signature == 1) {
 
         bitSet(bit, 1);
       }
-      if(pixy_component.pixy.ccc.blocks[i].m_signature == 2) {
+      if(pixy.ccc.blocks[i].m_signature == 2) {
 
         bitSet(bit, 2);
       }

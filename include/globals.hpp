@@ -15,3 +15,5 @@
 extern Drive drive_handler;
 extern LineHandler line_handler;
 extern Imu_PID imu_handler;
+extern PixyHandler pixy_handler;
+extern Pixy2 pixy;
