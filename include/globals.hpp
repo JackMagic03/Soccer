@@ -9,6 +9,7 @@
 #include "lineHandler.hpp"
 #include "PID_controller.hpp"
 #include "config.hpp"
+#include <SPI.h>
 
 extern Drive drive_handler;
 extern LineHandler line_handler;
