@@ -1,7 +1,7 @@
 -IC:/Users/bombe/Desktop/Calciatore/include
 -IC:/Users/bombe/Desktop/Calciatore/src
 -IC:/Users/bombe/Desktop/Calciatore/lib/pixy
--IC:/Users/bombe/.platformio/lib/Pixy2
+-IC:/Users/bombe/.platformio/lib/pixy2_ID7108/src
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/SPI/src
 -IC:/Users/bombe/Desktop/Calciatore/lib/imu
 -IC:/Users/bombe/.platformio/lib/Adafruit_BNO055-master

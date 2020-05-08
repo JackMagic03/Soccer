@@ -27,10 +27,12 @@ void Joints::init(uint8_t* t_pin_a, uint8_t* t_pin_b, uint8_t* t_pin_pwm) {
 void Joints::handle(int t_velocita) {
   if(t_velocita >= 0) {
     velocita = t_velocita;
-    direzione = LOW;
+    digitalWrite(pin_a, LOW);
+    digitalWrite(pin_b, HIGH);
   } else {
     velocita = !t_velocita;
-    direzione = HIGH;
+    digitalWrite(pin_a, HIGH);
+    digitalWrite(pin_b, LOW);
   }
   if(velocita > MAX_VEL) {
     velocita = MAX_VEL;
@@ -38,8 +40,5 @@ void Joints::handle(int t_velocita) {
   if(velocita < MAX_THRESHOLD) {
     velocita = 0;
   }
-
-  digitalWrite(pin_a, direzione);
-  digitalWrite(pin_b, !direzione);
   analogWrite(pin_pwm, velocita);
 }
