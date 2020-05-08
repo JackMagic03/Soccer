@@ -17,9 +17,6 @@ void loop() {
 
   //drive_handler.handle(200, 0, imu_handler.getOutput());
 
-  drive_handler.joint_component[1].handle(200);
-  delay(500);
-  drive_handler.joint_component[1].handle(-200);
-  delay(500);
+  Serial.println("Ciaoo");
   //Serial.println(imu_handler.imu_component.getHeading());
 }
