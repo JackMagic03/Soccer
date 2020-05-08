@@ -16,5 +16,8 @@ void loop() {
 
   //drive_handler.handle(200, line_handler.getEscapeAngle(), imu_handler.getOutput());
 
-  drive_handler.joint_component[0].handle(200);
+  //drive_handler.joint_component[0].handle(200);
+
+  imu_handler.imu_component.read();
+  Serial.println(imu_handler.imu_component.getHeading());
 }
