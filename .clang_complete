@@ -1,36 +1,33 @@
--IC:/Users/bombe/Desktop/Calciatore/include
--IC:/Users/bombe/Desktop/Calciatore/src
--IC:/Users/bombe/Desktop/Calciatore/lib/pixy
+-IC:/Users/bombe/OneDrive/MacOS/Programmi/Robot/Miei/Calciatore/include
+-IC:/Users/bombe/OneDrive/MacOS/Programmi/Robot/Miei/Calciatore/src
 -IC:/Users/bombe/.platformio/lib/pixy2_ID7108/src
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/SPI/src
--IC:/Users/bombe/Desktop/Calciatore/lib/imu
--IC:/Users/bombe/.platformio/lib/Adafruit_BNO055-master
--IC:/Users/bombe/.platformio/lib/Adafruit_BNO055-master/utility
--IC:/Users/bombe/.platformio/lib/Adafruit_ADXL343
--IC:/Users/bombe/.platformio/lib/Adafruit_Unified_Sensor
+-IC:/Users/bombe/.platformio/lib/Adafruit BNO055_ID506
+-IC:/Users/bombe/.platformio/lib/Adafruit BNO055_ID506/utility
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/Wire/src
--IC:/Users/bombe/Desktop/Calciatore/lib/lines
--IC:/Users/bombe/Desktop/Calciatore/lib/joints
+-IC:/Users/bombe/.platformio/lib/Adafruit Unified Sensor_ID31
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/cores/arduino
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/variants/mega
--IC:/Users/bombe/.platformio/lib/Adafruit_Circuit_Playground
--IC:/Users/bombe/.platformio/lib/Adafruit_Circuit_Playground/utility
--IC:/Users/bombe/.platformio/lib/Arduino_LSM9DS1/src
+-IC:/Users/bombe/OneDrive/MacOS/Programmi/Robot/Miei/Calciatore/lib/imu
+-IC:/Users/bombe/OneDrive/MacOS/Programmi/Robot/Miei/Calciatore/lib/joints
+-IC:/Users/bombe/OneDrive/MacOS/Programmi/Robot/Miei/Calciatore/lib/lines
+-IC:/Users/bombe/OneDrive/MacOS/Programmi/Robot/Miei/Calciatore/lib/pixy
+-IC:/Users/bombe/.platformio/lib/Adafruit Circuit Playground_ID602
+-IC:/Users/bombe/.platformio/lib/Adafruit Circuit Playground_ID602/utility
+-IC:/Users/bombe/.platformio/lib/Arduino_LSM9DS1_ID6589/src
 -IC:/Users/bombe/.platformio/lib/DHT
--IC:/Users/bombe/.platformio/lib/DHT 2
--IC:/Users/bombe/.platformio/lib/DS3231
--IC:/Users/bombe/.platformio/lib/HC-SR04
--IC:/Users/bombe/.platformio/lib/IRremote
--IC:/Users/bombe/.platformio/lib/Keypad
--IC:/Users/bombe/.platformio/lib/Keypad/utility
--IC:/Users/bombe/.platformio/lib/LedControl
--IC:/Users/bombe/.platformio/lib/LiquidCrystal/src
--IC:/Users/bombe/.platformio/lib/MPU6050
--IC:/Users/bombe/.platformio/lib/SD/src
+-IC:/Users/bombe/.platformio/lib/DS3231_ID1379
+-IC:/Users/bombe/.platformio/lib/IRremote_ID4
+-IC:/Users/bombe/.platformio/lib/Keypad_ID165/src
+-IC:/Users/bombe/.platformio/lib/LedControl_ID914/src
+-IC:/Users/bombe/.platformio/lib/LiquidCrystal_ID136
+-IC:/Users/bombe/.platformio/lib/MFRC522_ID63/src
+-IC:/Users/bombe/.platformio/lib/RF24_ID433
+-IC:/Users/bombe/.platformio/lib/RF24_ID433/utility
+-IC:/Users/bombe/.platformio/lib/SD_ID161
 -IC:/Users/bombe/.platformio/lib/Servo/src
 -IC:/Users/bombe/.platformio/lib/SpacebrewYun/src
 -IC:/Users/bombe/.platformio/lib/Stepper/src
--IC:/Users/bombe/.platformio/lib/arduino_495935/src
 -IC:/Users/bombe/.platformio/lib/pitches
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src
 -IC:/Users/bombe/.platformio/packages/framework-arduino-avr/libraries/HID/src
@@ -39,7 +36,7 @@
 -IC:/Users/bombe/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/5.4.0/include-fixed
 -IC:/Users/bombe/.platformio/packages/toolchain-atmelavr/avr/include
 -IC:/Users/bombe/.platformio/packages/tool-unity
--DPLATFORMIO=40303
+-DPLATFORMIO=40304
 -DARDUINO_AVR_MEGA2560
 -DF_CPU=16000000L
 -DARDUINO_ARCH_AVR

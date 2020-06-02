@@ -6,7 +6,7 @@
 *.lo
 *.o
 *.obj
-
+#ciao
 # Precompiled Headers
 *.gch
 *.pch
@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+.pio/
+*.clang_complete
+*.gcc-flags.json
+*.travis.yml
