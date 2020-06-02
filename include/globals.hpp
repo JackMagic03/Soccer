@@ -8,12 +8,10 @@
 #include "drive.hpp"
 #include "lineHandler.hpp"
 #include "PID_controller.hpp"
-#include "pixyHandler.hpp"
-#include "config.hpp"
-#include <SPI.h>
+//#include "pixyHandler.hpp"
 
 extern Drive drive_handler;
 extern LineHandler line_handler;
 extern Imu_PID imu_handler;
-extern PixyHandler pixy_handler;
-extern Pixy2 pixy;
+//extern PixyHandler pixy_handler;
+//extern Pixy2 pixy;
