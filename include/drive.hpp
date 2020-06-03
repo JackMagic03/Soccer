@@ -1,13 +1,14 @@
 /**
  * drive.hpp
- * @author Massimo Giordano
  */
 
-#pragma once
-#include "joints.hpp"
-#include "config.hpp"
+#ifndef DRIVE_HPP
+#define DRIVE_HPP
 
-class Drive {
+#include "components_obj.hpp"
+
+class Drive
+{
   /**
    * Sto di cendo che esistono 3 oggetti per i motori.
    * Vengono dichiarati nel drive.cpp
@@ -24,12 +25,13 @@ class Drive {
   float v_y;       //Componente velocità dell'asse Y
   float d_w;       //Velocità angolare
   float r_w;       //Il terzo componente del calcolo della matrice. Usato per la correzione della direzione;
+
 public:
-  Joints joint_component[NUM_JOINTS];
-  
   Drive();
 
   static float gradi(float t_rad);      //Funzione che restituisce i gradi
   static float radianti(float t_gradi); //Funzione che restituisce i radianti
   void handle(float t_angle, int t_vel, float t_imu); //La handle che dice ai singoli motori di muoversi
 };
+
+#endif

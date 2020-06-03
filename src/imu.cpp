@@ -5,17 +5,20 @@
 
 #include "imu.hpp"
 
-Imu::Imu(): bno(55) {
+Imu::Imu() 
+{
   bno.begin(bno.OPERATION_MODE_IMUPLUS);
 
   heading = 0;
 }
 
-void Imu::read() {
+void Imu::read()
+{
   imu::Vector<3> euler = bno.getVector(Adafruit_BNO055::VECTOR_EULER);
   heading = euler.x();  //Lettura dell'asse x
 
-  if(heading > 180) {
+  if(heading > 180)
+  {
     heading -= 360;
   }
   /**
@@ -24,6 +27,7 @@ void Imu::read() {
    */
 }
 
-int Imu::getHeading() {
+int Imu::getHeading()
+{
   return heading;
 }

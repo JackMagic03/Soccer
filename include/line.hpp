@@ -3,11 +3,13 @@
  * #author Massimo Giordano
  */
 
-#pragma once
-#include "config.hpp"
+#ifndef LINE_HPP
+#define LINE_HPP
+
 #include <Arduino.h>
 
-class Line {
+class Line
+{
   uint8_t pin;
   int raw_data;
   /**
@@ -25,3 +27,5 @@ public:
   void init(uint8_t* t_pin, int16_t* t_angle, int* t_soglia);
   uint8_t read();
 };
+
+#endif

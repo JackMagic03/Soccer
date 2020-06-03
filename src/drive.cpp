@@ -2,43 +2,42 @@
  * drive.cpp
  * @author Massimo Giordano
  */
-
 #include "drive.hpp"
 
-Drive::Drive() {
+Drive::Drive()
+{
   /**
    * Inizializziamo le variabili del drive
    */
-  for(int i = 0; i < NUM_JOINTS; i++) {
-
-    joint_component[i].init(&PIN_DIR_A[i], &PIN_DIR_B[i], &PIN_PWM[i]);
-  }
-
   v_x = 0;
   v_y = 0;
   d_w = 0;
   r_w = 0;
 
-  for(int i = 0; i < NUM_JOINTS; i++) {
+  for(int i = 0; i < NUM_JOINTS; i++)
+  {
     vel[i] = 0;
   }
 }
 
-float Drive::gradi(float t_rad) {
+float Drive::gradi(float t_rad)
+{
   /**
    * Ritorna i gradi dei radianti passati come parametro
    */
   return (t_rad * 180.0 / PI);
 }
 
-float Drive::radianti(float t_gradi) {
+float Drive::radianti(float t_gradi)
+{
   /**
    * Ritorna i radianti di un angolo passato come parametro
    */
   return (t_gradi * PI / 180.0);
 }
 
-void Drive::handle(float t_angle, int t_vel, float t_imu) {
+void Drive::handle(float t_angle, int t_vel, float t_imu)
+{
   /**
    * Impostare la velocità per ogni singolo motore
    * dati angolo e velocità finale a cui il robot
@@ -58,12 +57,13 @@ void Drive::handle(float t_angle, int t_vel, float t_imu) {
     * Il vero e proprio calcolo delle velocità.
     * Si moltiplicano i termini delle matrici con v_x, v_y e d_w.
     */
-  for(int i = 0; i < NUM_JOINTS; i++) {
-
+  for(int i = 0; i < NUM_JOINTS; i++)
+  {
       vel[i] = matrix [i][0] * (v_x) +
                matrix [i][1] * (v_y) +
                matrix [i][2] * (t_imu);
-
-      joint_component[i].handle(vel[i]);
   }
+  joint_1.handle(vel[0]);
+  joint_2.handle(vel[1]);
+  joint_3.handle(vel[2]);
 }

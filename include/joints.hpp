@@ -1,13 +1,15 @@
 /**
  * joints.hpp
- * @author Massimo Giordano
  */
 
-#pragma once
+#ifndef JOINTS_HPP
+#define JOINTS_HPP
+
 #include <Arduino.h>
+#include "globals.hpp"
 
-
-class Joints {
+class Joints
+{
   uint8_t pin_a;
   uint8_t pin_b;
   uint8_t pin_pwm;
@@ -15,8 +17,9 @@ class Joints {
   uint8_t velocita;
 
 public:
-  Joints();
+  Joints(uint8_t t_pin_a[], uint8_t t_pin_b[], uint8_t t_pin_pwm[]);
 
-  void init(uint8_t* t_pin_a, uint8_t* t_pin_b, uint8_t* t_pin_pwm);
   void handle(int t_velocita);
 };
+
+#endif

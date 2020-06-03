@@ -1,21 +1,22 @@
 /**
  * imu.hpp
- * @author Massimo Giordano
  */
 
-#pragma once
-#include <Arduino.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
-#include <utility/imumaths.h>
-#include <Math.h>
+#ifndef IMU_HPP
+#define IMU_HPP
 
-class Imu {
-  Adafruit_BNO055 bno;
+#include "components.hpp"
+#include <Arduino.h>
+
+class Imu
+{
   int heading;
+
 public:
   Imu();
 
   void read();
   int getHeading();
 };
+
+#endif

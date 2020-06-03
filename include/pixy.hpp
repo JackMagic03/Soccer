@@ -1,13 +1,14 @@
 /**
  * pixy.hpp
- * @author Massimo Giordano
  */
-/*#pragma once
+#ifndef PIXY_HPP
+#define PIXY_HPP
 
-#include <Pixy2.h>
-#include <Wire.h>
-extern Pixy2 pixy;
-class Pixy {
+#include "components.hpp"
+#include <Arduino.h>
+
+class Pixy 
+{
   uint8_t get_blocks;
   uint8_t num_blocks;
 
@@ -20,4 +21,6 @@ public:
   uint8_t getGetBlocks();
   uint8_t getNumBlocks();
   uint8_t getFlg();
-};*/
+};
+
+#endif
