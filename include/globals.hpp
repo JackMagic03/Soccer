@@ -1,33 +1,31 @@
 /**
  * globals.hpp
  */
-#include <Arduino.h>
+#pragma once
+#include "mors_lineHandler.hpp"
+#include "mors_drive.hpp"
+#include "mors_imuHandler.hpp"
+#include "mors_pixyHandler.hpp"
 
-#define NUM_JOINTS 3          //Sono i motori che abbiamo
-#define NUM_LINES 6           //Sono i sensori di linea che abbiamo.
+const uint8_t PIN_LINE[NUM_LINES] = {A0, A1, A2, A3, A4, A5}; //pin fisici dei sensori
+const uint16_t ANGLE_LINE[NUM_LINES] = {30, 90, 150, 210, 270, 330}; //angoli a cui si trovano i sensori
+const uint16_t TRESHOLD_LINE[NUM_LINES] = {800, 800, 800, 800, 800, 800}; //soglie dei singoli sensori. da tarare
 
 const uint8_t PIN_DIR_A[NUM_JOINTS] = {4, 13, 7};
 const uint8_t PIN_DIR_B[NUM_JOINTS] = {3, 12, 6};
 const uint8_t PIN_PWM[NUM_JOINTS] = {2, 11, 5};
-#define MAX_VEL 255
-#define MAX_THRESHOLD 20
-/**
- *  Ho levato i #define perché dava un problema di conversione da #define a uint8_t* e
- *  tutto il resto dei parametri
- */
-// #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-// #define sbi(sfr, bit) (_SFR_BYTE(sfr) != _BV(bit))
-const int SOGLIA_LINEE[NUM_LINES] = {800, 800, 800, 800, 800, 800};
-const uint8_t PIN_LINEE[NUM_LINES] = {A0, A1, A2, A3, A4, A5};
-const int ANGOLI_LINEE[NUM_LINES] = {30, 90, 150, 210, 270, 330};
 
-#define DEFAULT_TIMER 3000
+extern MorsLine line_vect[NUM_LINES]; //array di linee
+extern MorsLineHandler line_handler; //gestore di linee
 
-const float K_P = 0;
-const float K_I = 0;
-const float K_D = 0;
-const float D_T = 0.01;
-const float ID_T = 100;
+extern MorsJoint joint_vect[NUM_JOINTS]; //array di motori
+extern MorsDrive drive_handler; //gestore dei motori
 
-#define MAX_OUTPUT 255
-#define MIN_OUTPUT -255
+extern Adafruit_BNO055 bno;
+extern MorsImu imu_dev;
+extern MorsPid pid_controller;
+extern MorsImuHandler imu_handler;
+
+extern Pixy2 pixy;
+extern MorsPixy pixy_dev;
+extern MorsPixyHandler pixy_handler;
