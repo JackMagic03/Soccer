@@ -3,32 +3,55 @@
  */
 #include "mors_pixyHandler.hpp"
 
-MorsPixyHandler::MorsPixyHandler()
+MorsPixyHandler::MorsPixyHandler(Pixy2* t_pixy_ptr)
 {
+	this-> pixy_ptr = t_pixy_ptr;
+
+	this-> get_blocks = 0;
+	this-> num_blocks = 0;
 	this-> heading_x = 0;
 	this-> heading_y = 0;
 
+	this-> flg = 0;
 	this-> bit = 0;
+}
+
+void MorsPixyHandler::read()
+{
+	this-> get_blocks = this-> pixy_ptr-> ccc.getBlocks();
+	this-> num_blocks = this-> pixy_ptr-> ccc.numBlocks;
+
+	if(this-> get_blocks > 0)
+	{
+		if(this-> num_blocks)
+		{
+		this-> flg = HIGH;
+		}
+		else
+		{
+		this-> flg = 0;
+		}
+	}
 }
 
 void MorsPixyHandler::test()
 {
-	if(this-> pixy_ptr-> getFlg())
+	if(this-> flg)
 	{
-		for(int i = 0; i < this-> pixy_ptr-> getNumBlocks(); i++)
+		for(int i = 0; i < this-> num_blocks; i++)
 		{
-			if(this-> pixy_ptr-> getSignature(i) == 0)
+			if(this-> pixy_ptr-> ccc.blocks[i].m_signature == 0)
 			{
-				heading_x = this-> pixy_ptr-> getm_x(i);
-				heading_y = this-> pixy_ptr-> getm_x(i);
+				heading_x = this-> pixy_ptr-> ccc.blocks[i].m_x;
+				heading_y = this-> pixy_ptr-> ccc.blocks[i].m_y;
 
 				bitSet(bit, 0);
 			}
-			if(this-> pixy_ptr-> getSignature(i) == 1)
+			if(this-> pixy_ptr-> ccc.blocks[i].m_signature == 1)
 			{
 				bitSet(bit, 1);
 			}
-			if(this-> pixy_ptr-> getSignature(i) == 2)
+			if(this-> pixy_ptr-> ccc.blocks[i].m_signature == 2)
 			{
 				bitSet(bit, 2);
 			}
@@ -38,7 +61,7 @@ void MorsPixyHandler::test()
 
 void MorsPixyHandler::handle()
 {
-	pixy_ptr-> read();
+	MorsPixyHandler::read();
 	MorsPixyHandler::test();
 	/**
 	 * Fa robe
