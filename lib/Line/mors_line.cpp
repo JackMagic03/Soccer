@@ -13,7 +13,7 @@ MorsLine::MorsLine(uint8_t t_pin, uint16_t t_angle, uint16_t t_treshold)
 	this-> data = 0;
 }
 
-void MorsLine::read(void)
+void MorsLine::read()
 {
 	this-> raw_data = analogRead(this-> pin);
 

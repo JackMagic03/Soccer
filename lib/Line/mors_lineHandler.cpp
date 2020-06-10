@@ -3,7 +3,7 @@
  */
 #include "mors_lineHandler.hpp"
 
-MorsLineHandler::MorsLineHandler(void)
+MorsLineHandler::MorsLineHandler()
 {
 	/**
 	 * inizializzazione variabili e puntatori a classi
@@ -66,4 +66,14 @@ void MorsLineHandler::handle()
 	{
 		MorsLineHandler::reset(); //reset di mask, flg e timer
 	}
+}
+
+uint8_t MorsLineHandler::getFlg()
+{
+	return flg;
+}
+
+int16_t MorsLineHandler::getEscapeAngle()
+{
+	return escape_angle;
 }

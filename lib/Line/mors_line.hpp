@@ -17,5 +17,5 @@ public:
 
 	MorsLine(uint8_t t_pin, uint16_t t_angle, uint16_t t_treshold); //costruttore
 
-	void read(void); //lettura del sensore
+	void read(); //lettura del sensore
 };

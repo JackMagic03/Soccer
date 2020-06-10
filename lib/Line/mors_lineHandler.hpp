@@ -18,9 +18,10 @@ class MorsLineHandler
 	int16_t escape_angle;  //La traiettoria calcolata dalla media dei vettori dagli angoli dei sensori
 
 public:
-	MorsLineHandler(void); //costruttore
+	MorsLineHandler(); //costruttore
 
 	void reset(); //funzione di reset delle variabili di controllo
 	void handle(); //funzione di gestione generale
-	void getEscapeAngle(); //funzione di ritorno dell'angolo di uscita
+	uint8_t getFlg(); //ritorno della flg
+	int16_t getEscapeAngle(); //funzione di ritorno dell'angolo di uscita
 };
