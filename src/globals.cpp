@@ -64,5 +64,8 @@ MorsPid pid_controller;
 MorsImuHandler imu_handler;
 
 Pixy2 pixy;
-MorsPixy pixy_dev(&pixy);
-MorsPixyHandler pixy_handler;
+MorsPixyHandler pixy_handler(&pixy);
+
+MorsPlanner* planner; //puntatore a planner
+MorsAttackPlanner attack_planner; //oggetto attaccante
+MorsDefensePlanner defense_planner; //oggetto difensore
