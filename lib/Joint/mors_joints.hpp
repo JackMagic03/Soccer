@@ -17,11 +17,11 @@ class MorsJoint
 	uint8_t pin_b;
 	uint8_t pin_pwm;
 
-	uint8_t velocita;
+	uint8_t speed;
 	uint8_t direzione;
 public:
 	MorsJoint(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm); //costruttore
 
-	void setSpeed(int16_t t_velocita); //funzione per calcolare la velocita
+	void setSpeed(int16_t t_speed); //funzione per calcolare la velocita
 	void handle(); //funzione per far girare i motori
 };

@@ -8,7 +8,7 @@ MorsAttackPlanner::MorsAttackPlanner()
 	this-> ready = false;
 
 	this-> angle = 0;
-	this-> vel = 0;
+	this-> speed = 0;
 	this-> imu_angle = 0;
 }
 

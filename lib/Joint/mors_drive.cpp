@@ -14,7 +14,7 @@ MorsDrive::MorsDrive()
 {
 	for(int i = 0; i < NUM_JOINTS; i++)
 	{
-		this-> vel[i] = 0;
+		this-> speed[i] = 0;
 	}
 	this-> v_x = 0;
 	this-> v_y = 0;
@@ -36,7 +36,7 @@ float MorsDrive::radianti(float t_gradi)
   return (t_gradi * PI / 180.0);
 }
 
-void MorsDrive::handle(float t_angle, int t_vel, float t_imu)
+void MorsDrive::handle(float t_angle, int t_speed, float t_imu)
 {
   /**
    * Impostare la velocità per ogni singolo motore
@@ -48,9 +48,9 @@ void MorsDrive::handle(float t_angle, int t_vel, float t_imu)
    * perché tutti i componenti elettronici del robot ragionano in radianti,
    * tranne la bussola ma in questo caso non importa.
    */
-	this-> v_x = t_vel * sin(//MorsDrive::radianti(t_angle - OFFSET_ANGLE));
+	this-> v_x = t_speed * sin(//MorsDrive::radianti(t_angle - OFFSET_ANGLE));
                     t_angle);
-	this-> v_y = t_vel * cos(//MorsDrive::radianti(t_angle - OFFSET_ANGLE));
+	this-> v_y = t_speed * cos(//MorsDrive::radianti(t_angle - OFFSET_ANGLE));
                     t_angle);
 
 	/**
@@ -59,11 +59,11 @@ void MorsDrive::handle(float t_angle, int t_vel, float t_imu)
 	 */
 	for(int i = 0; i < NUM_JOINTS; i++)
 	{
-		vel[i]= matrix [i][0] * (v_x) +
-				matrix [i][1] * (v_y) +
-				matrix [i][2] * (t_imu);
+		speed[i] = 	matrix [i][0] * (v_x) +
+					matrix [i][1] * (v_y) +
+					matrix [i][2] * (t_imu);
 
-		joint[i].setSpeed(vel[i]); //passo la velocita alla classe dei motori
+		joint[i].setSpeed(speed[i]); //passo la velocita alla classe dei motori
 	}
 	for(int i = 0; i < NUM_JOINTS; i++)
 	{

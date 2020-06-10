@@ -17,11 +17,11 @@ void loop()
 	/**
 	 * planner ha diverse funzioni, i getter sono suoi, la handle varia in base se è attaccante o difensore
 	 */
-	if(/*perdo palla o qualche altra cosa. metto HIGH per non dare errori*/ HIGH)
+	if(/*perdo palla o qualche altra cosa. metto HIGH per non dare errori*/ LOW)
 	{
 		planner = &defense_planner;
 	}
-	else if(/*riconquisto palla o qualche altra cosa. metto HIGH per non dare errori*/ HIGH)
+	else //riconquisto palla o qualche altra cosa. metto HIGH per non dare errori
 	{
 		planner = &attack_planner;
 	}
@@ -34,10 +34,10 @@ void loop()
 
 	if(line_handler.getFlg()) //se le linee sono state lette
 	{
-		mors_drive.handle(line_handler.getEscapeAngle(), 200, planner-> getImuAngle()); //vorrei che guardasse il nord, ma non so come dirglielo al planner
+		mors_drive.handle(line_handler.getEscapeAngle(), 200, planner-> getOutput()); //guarda il nord fisso
 	}
 	else if(planner-> isReady()) //se le linee non sono state lette e se il giocatore rileva qualcosa
 	{
-		mors_drive.handle(planner-> getVel(), planner-> getAngle(), planner-> getImuAngle()); //deve guardare come dice il planner
+		mors_drive.handle(planner-> getAngle(), planner-> getVel(), planner-> getImuAngle()); //deve guardare come dice il planner
 	}
 }

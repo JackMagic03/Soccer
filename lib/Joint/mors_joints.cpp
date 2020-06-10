@@ -14,30 +14,30 @@ MorsJoint::MorsJoint(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm)
 	pinMode(pin_b, OUTPUT);
 	pinMode(pin_pwm, OUTPUT);
 
-	velocita = 0;
+	speed = 0;
 	direzione = LOW;
 }
 
-void MorsJoint::setSpeed(int16_t t_velocita)
+void MorsJoint::setSpeed(int16_t t_speed)
 {
-	if(t_velocita >= 0)
+	if(t_speed >= 0)
 	{
-		velocita = t_velocita;
+		speed = t_speed;
 		direzione = LOW;
 	}
 	else
 	{
-		velocita = -t_velocita;
+		speed = -t_speed;
 		direzione = HIGH;
 	}
 
-	if(velocita > MAX_VEL)
+	if(speed > MAX_VEL)
 	{
-		velocita = MAX_VEL;
+		speed = MAX_VEL;
 	}
-	if(velocita < MIN_VEL)
+	if(speed < MIN_VEL)
 	{
-		velocita = MIN_VEL;
+		speed = MIN_VEL;
 	}
 }
 
@@ -45,5 +45,5 @@ void MorsJoint::handle()
 {
 	digitalWrite(pin_a, direzione);
 	digitalWrite(pin_b, !direzione);
-	analogWrite(pin_pwm, velocita);
+	analogWrite(pin_pwm, speed);
 }
