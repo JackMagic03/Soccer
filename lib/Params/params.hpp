@@ -9,6 +9,7 @@
 #define NUM_JOINTS 3 //numero dei giunti
 #define MAX_VEL 255 //velocita massima
 #define MIN_VEL 20 //velocita minima
+#define OFFSET_ANGLE 270 //per la funzione handle del drive quando impostiamo gli angoli sessagesimali
 
 const float K_P = 0;
 const float K_I = 0;

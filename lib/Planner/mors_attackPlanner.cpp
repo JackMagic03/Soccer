@@ -12,7 +12,7 @@ MorsAttackPlanner::MorsAttackPlanner()
 	this-> imu_angle = 0;
 }
 
-MorsAttachPlanner::handle()
+void MorsAttackPlanner::handle()
 {
-	
+
 }

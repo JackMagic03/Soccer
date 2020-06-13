@@ -1,7 +1,7 @@
 /**
  * mors_defensePlanner.cpp
  */
-#include "mors_defensePlanner.cpp"
+#include "mors_defensePlanner.hpp"
 
 MorsDefensePlanner::MorsDefensePlanner()
 {
@@ -14,5 +14,5 @@ MorsDefensePlanner::MorsDefensePlanner()
 
 void MorsDefensePlanner::handle()
 {
-	
+
 }
