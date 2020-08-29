@@ -1,7 +1,7 @@
 /**
  * main.cpp
  */
-#include "globals.hpp"
+#include "programs/globals.hpp"
 #include <Arduino.h>
 
 void setup()
@@ -20,11 +20,11 @@ void loop()
 	// /**
 	//  * planner ha diverse funzioni, i getter sono suoi, la handle varia in base se è attaccante o difensore
 	//  */
-	// if(/*perdo palla o qualche altra cosa. metto HIGH per non dare errori*/ LOW)
+	// if(perdo palla o qualche altra cosa)
 	// {
 	// 	planner = &defense_planner;
 	// }
-	// else //riconquisto palla o qualche altra cosa. metto HIGH per non dare errori
+	// else if(riconquisto palla o qualche altra cosa) 
 	// {
 	// 	planner = &attack_planner;
 	// }
@@ -43,15 +43,7 @@ void loop()
 	// {
 	// 	mors_drive.handle(planner-> getAngle(), planner-> getVel(), planner-> getImuAngle()); //deve guardare come dice il planner
 	// }
-	//imu_dev.read();
-
-	//int16_t heading = imu_dev.getHeading();
 
 	int ciao = 4;
 	Serial.println(ciao);
-
-	//pid_controller.handle(heading);
-
-	//drive_handler.handle(100, 200, 0);
-
 }

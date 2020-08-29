@@ -2,7 +2,7 @@
  * mors_joints.cpp
  */
 #include "mors_joints.hpp"
-#include "params.hpp"
+#include "Params/params.hpp"
 
 MorsJoint::MorsJoint(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm)
 {

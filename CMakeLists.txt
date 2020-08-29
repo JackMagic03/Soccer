@@ -1,4 +1,10 @@
-cmake_minimum_required(VERSION "3.17.3")
+cmake_minimum_required (VERSION 3.12)
 
-project("Soccer")
+# add the subdirectory
+add_subdirectory(libraries)
+add_subdirectory(programs)
 
+#add executable
+add_executable(Soccer main.cpp)
+
+target_link_libraries(Soccer Globals Libraries)

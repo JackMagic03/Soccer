@@ -17,7 +17,7 @@ protected:
 				 //deve essere per forza >= 0
 	uint16_t imu_angle; //dato che estrapoliamo dalla imu
 
-	bool ready; //variabil eper abilitare il planner
+	bool ready; //variabile per abilitare il planner
 public:
 	virtual void handle(); //funzione che verra sviluppata nel planner d'attacco e di difesa
 

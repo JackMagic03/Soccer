@@ -2,7 +2,7 @@
  * mors_pid.cpp
  */
 #include "mors_pid.hpp"
-#include "params.hpp"
+#include "Params/params.hpp"
 
 MorsPid::MorsPid()
 {
@@ -46,7 +46,7 @@ void MorsPid::handle(int16_t t_input) //come parametro verra messa la lettura de
 	float error_d = this-> k_d * ((this-> error - this-> prev_error) * this-> d_t);
 
 	/**
-	 * parte poporzionale
+	 * parte proporzionale
 	 */
 	this-> output = this-> tot_error + error_d + (this-> k_p * this-> error);
 

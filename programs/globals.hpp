@@ -2,12 +2,12 @@
  * globals.hpp
  */
 #pragma once
-#include "mors_lineHandler.hpp"
-#include "mors_drive.hpp"
-#include "mors_imuHandler.hpp"
-#include "mors_pixyHandler.hpp"
-#include "mors_attackPlanner.hpp"
-#include "mors_defensePlanner.hpp"
+#include "Line/mors_lineHandler.hpp"
+#include "Joint/mors_drive.hpp"
+#include "Imu/mors_imuHandler.hpp"
+#include "Pixy/mors_pixyHandler.hpp"
+#include "Planner/mors_attackPlanner.hpp"
+#include "Planner/mors_defensePlanner.hpp"
 
 const uint8_t PIN_LINE[NUM_LINES] = {A0, A1, A2, A3, A4, A5}; //pin fisici dei sensori
 const uint16_t ANGLE_LINE[NUM_LINES] = {30, 90, 150, 210, 270, 330}; //angoli a cui si trovano i sensori

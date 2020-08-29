@@ -3,7 +3,7 @@
  */
 #pragma once
 #include "mors_line.hpp"
-#include "params.hpp"
+#include "Params/params.hpp"
 
 class MorsLineHandler
 {
