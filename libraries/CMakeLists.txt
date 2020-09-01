@@ -1,6 +1,5 @@
 # create libraries
-add_library
-(
+add_library (
 	Libraries 
 		Params/params.hpp
 
