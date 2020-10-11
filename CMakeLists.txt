@@ -1,12 +1,7 @@
-cmake_minimum_required (VERSION 3.12)
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/arduino-cmake/cmake/ArduinoToolchain.cmake)
 
-project(Mors)
+cmake_minimum_required(VERSION 2.8)
+project(00_generic C CXX)
 
-# add the subdirectory
-add_subdirectory(libraries)
-add_subdirectory(programs)
-
-#add executable
-add_executable(Soccer main.cpp)
-
-target_link_libraries(Soccer Globals Libraries)
+add_subdirectory(libs)
+add_subdirectory(bin)

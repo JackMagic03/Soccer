@@ -1,9 +1,0 @@
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/CMakeFiles/rebuild_cache.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/CMakeFiles/edit_cache.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/CMakeFiles/Soccer.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/libraries/CMakeFiles/rebuild_cache.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/libraries/CMakeFiles/edit_cache.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/libraries/CMakeFiles/Libraries.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/programs/CMakeFiles/rebuild_cache.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/programs/CMakeFiles/edit_cache.dir
-/Users/massimogiordano/Desktop/Repositories/Soccer/build/programs/CMakeFiles/Globals.dir

@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libGlobals.a  CMakeFiles/Globals.dir/globals.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libGlobals.a
