@@ -1,2 +1,5 @@
+.pio/
 
-build/
+.clang_complete
+.gcc-flags.json
+platformio.ini
