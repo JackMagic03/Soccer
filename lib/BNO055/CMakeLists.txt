@@ -1,0 +1,3 @@
+add_library(Adafruit_BNO055 Adafruit_BNO055.cpp)
+target_link_libraries(Adafruit_BNO055 PRIVATE Adafruit_Sensor)
+target_link_arduino_libraries(Adafruit_BNO055 PRIVATE Wire core)

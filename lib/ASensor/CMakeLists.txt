@@ -1,0 +1,2 @@
+add_library(Adafruit_Sensor Adafruit_Sensor.cpp)
+target_link_arduino_libraries(Adafruit_Sensor PRIVATE core)
