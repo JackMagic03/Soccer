@@ -24,4 +24,10 @@ public:
 
 	void setSpeed(float t_speed); //funzione per calcolare la velocita
 	void handle(); //funzione per far girare i motori
+  inline void printInfo() {
+    char buf[256];
+    sprintf(buf, "pin_a: %d\tpin_b: %d\tpin_pwm: %d\tspeed: %d\tdir: %d\n",
+	    pin_a, pin_b, pin_pwm, speed, direzione);
+    Serial.print(buf);
+  };
 };

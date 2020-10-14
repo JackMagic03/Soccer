@@ -1,0 +1,18 @@
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/Arduino-CMake-Toolchain/Arduino-toolchain.cmake")
+set(ARDUINO_BOARD_OPTIONS_FILE "${CMAKE_SOURCE_DIR}/BoardOptions.cmake")
+
+cmake_minimum_required(VERSION 3.16.3)
+project(mg-soccer C CXX)
+
+include_directories("${CMAKE_SOURCE_DIR}/lib/Params")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Joint")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Line")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Adafruit_Sensor")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Adafruit_BNO055")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Imu")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Pid")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Pixy2")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Pixy")
+include_directories("${CMAKE_SOURCE_DIR}/lib/Planner")
+add_subdirectory(lib)
+add_subdirectory(src)

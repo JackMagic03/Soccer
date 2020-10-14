@@ -1,32 +1,30 @@
 /**
  * main.cpp
  */
+
+
+#include "Arduino.h"
 #include "globals.hpp"
-#include <Arduino.h>
+#include <mors_lineHandler.hpp>
+#include <mors_drive.hpp>
+#include <mors_imuHandler.hpp>
+#include <mors_pixyHandler.hpp>
+#include <mors_attackPlanner.hpp>
+#include <mors_defensePlanner.hpp>
 
 void setup()
 {
-	Serial.begin(9600);
-
-	bno.begin(); //init della imu
-
-	pixy.init(); //init della pixy
-
-	planner = &attack_planner; //all'inizio, tutti e due i robot saranno attaccanti
+  Serial.begin(115200);
+  for (int i = 0; i < 3; ++i) {
+    joint_vect[i].printInfo();
+  }
 }
 
 void loop()
 {
-	// for(int i = 0; i < NUM_JOINTS; ++i)
-	// {
-	// 	joint_vect[i].setSpeed(15);
-	// }
-	//
-	// for(int i = 0; i < NUM_JOINTS; ++i)
-	// {
-	// 	joint_vect[i].handle();
-	// }
-
-	drive_handler.handle(0, 150, 0);
-	delay(2000);
+  Serial.print("Hello World!\n");
+  joint_vect[0].setSpeed(10);
+  delay(500);
+  
+  
 }
