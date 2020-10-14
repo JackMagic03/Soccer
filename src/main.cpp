@@ -17,33 +17,16 @@ void setup()
 
 void loop()
 {
-	// /**
-	//  * planner ha diverse funzioni, i getter sono suoi, la handle varia in base se è attaccante o difensore
-	//  */
-	// if(perdo palla o qualche altra cosa)
+	// for(int i = 0; i < NUM_JOINTS; ++i)
 	// {
-	// 	planner = &defense_planner;
+	// 	joint_vect[i].setSpeed(15);
 	// }
-	// else if(riconquisto palla o qualche altra cosa)
-	// {
-	// 	planner = &attack_planner;
-	// }
-	// /**
-	//  * tutte le funzioni prima delle linee, poi del planner
-	//  */
-	// line_handler.handle(); //lettura dei sensori, test e calcolo dell'angolo di uscita
 	//
-	// planner-> handle(); //in base al ruolo del giocatore
-	//
-	// if(line_handler.getFlg()) //se le linee sono state lette
+	// for(int i = 0; i < NUM_JOINTS; ++i)
 	// {
-	// 	mors_drive.handle(line_handler.getEscapeAngle(), 200, planner-> getOutput()); //guarda il nord fisso
-	// }
-	// else if(planner-> isReady()) //se le linee non sono state lette e se il giocatore rileva qualcosa
-	// {
-	// 	mors_drive.handle(planner-> getAngle(), planner-> getVel(), planner-> getImuAngle()); //deve guardare come dice il planner
+	// 	joint_vect[i].handle();
 	// }
 
-	int ciao = 4;
-	Serial.println(ciao);
+	drive_handler.handle(0, 150, 0);
+	delay(2000);
 }

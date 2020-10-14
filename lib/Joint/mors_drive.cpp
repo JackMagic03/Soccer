@@ -10,10 +10,11 @@ static double matrix[NUM_JOINTS][NUM_JOINTS] =
 	{-0.87, 0.5, 1}  //sin T3, cos T3, 1
 };
 
-MorsDrive::MorsDrive()
+MorsDrive::MorsDrive(MorsJoint* joint_obj)
 {
 	for(int i = 0; i < NUM_JOINTS; i++)
 	{
+		this-> joint[i] = joint_obj[i];
 		this-> speed[i] = 0;
 	}
 	this-> v_x = 0;
@@ -57,16 +58,31 @@ void MorsDrive::handle(float t_angle, int t_speed, float t_imu)
 	 * Il vero e proprio calcolo delle velocità.
 	 * Si moltiplicano i termini delle matrici con v_x, v_y e t_imu.
 	 */
+	Serial.println("Prima del comando");
 	for(int i = 0; i < NUM_JOINTS; i++)
 	{
+		Serial.println(NUM_JOINTS);
+		Serial.println(speed[i]);
 		speed[i] = 	matrix [i][0] * (v_x) +
 					matrix [i][1] * (v_y) +
 					matrix [i][2] * (t_imu);
+		// if(speed[i] > MAX_VEL)
+		// {
+		// 	speed[i] = MAX_VEL;
+		// }
+		// else if(speed[i] < MIN_VEL)
+		// {
+		// 	speed[i] = MIN_VEL;
+		// }
+		//joint[i].setSpeed(speed[i]); //passo la velocita alla classe dei motori
 
-		joint[i].setSpeed(speed[i]); //passo la velocita alla classe dei motori
+		//joint[i].handle();//speed[i]); //muovo i giunti
+
+		Serial.print("Speed ");
+		Serial.print(i);
+		Serial.print(" di Drive: ");
+		Serial.println(speed[i]);
+
 	}
-	for(int i = 0; i < NUM_JOINTS; i++)
-	{
-		joint[i].handle(); //muovo i giunti
-	}
+	Serial.println("Dopo il comando");
 }

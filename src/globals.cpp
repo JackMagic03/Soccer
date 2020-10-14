@@ -56,7 +56,7 @@ MorsJoint joint_vect[NUM_JOINTS] =
 		pin_pwm: PIN_PWM[2]
 	}
 };
-MorsDrive drive_handler;
+MorsDrive drive_handler(&joint_vect[NUM_JOINTS]);
 
 Adafruit_BNO055 bno(55);
 MorsImu imu_dev(&bno);

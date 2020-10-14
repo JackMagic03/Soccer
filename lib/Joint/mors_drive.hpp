@@ -8,14 +8,14 @@
 
 class MorsDrive
 {
-	MorsJoint* joint;
+	MorsJoint* joint; //Array d puntatori ai motori
 
 	float speed[NUM_JOINTS]; //Le velocità che andranno passate ai motori
 
 	float v_x; //Componente velocità del'asse X
 	float v_y; //Componente velocità dell'asse Y
 public:
-	MorsDrive();
+	MorsDrive(MorsJoint* joint_obj);
 
 	static float gradi(float t_rad); //Funzione che restituisce i gradi
 	static float radianti(float t_gradi); //Funzione che restituisce i radianti

@@ -18,31 +18,44 @@ MorsJoint::MorsJoint(uint8_t t_pin_a, uint8_t t_pin_b, uint8_t t_pin_pwm)
 	direzione = LOW;
 }
 
-void MorsJoint::setSpeed(int16_t t_speed)
+void MorsJoint::setSpeed(float t_speed)
 {
+	Serial.println("Inizio setSpeed");
 	if(t_speed >= 0)
 	{
-		speed = t_speed;
+		this-> speed = t_speed;
 		direzione = LOW;
 	}
 	else
 	{
-		speed = -t_speed;
+		this-> speed = -t_speed;
 		direzione = HIGH;
 	}
-
-	if(speed > MAX_VEL)
+	if(t_speed >= 0)
 	{
-		speed = MAX_VEL;
+		this-> speed = t_speed;
+		direzione = LOW;
 	}
-	if(speed < MIN_VEL)
+	else
 	{
-		speed = MIN_VEL;
+		this-> speed = -t_speed;
+		direzione = HIGH;
 	}
 }
 
-void MorsJoint::handle()
+void MorsJoint::handle()//float t_speed)
 {
+	// if(t_speed >= 0)
+	// {
+	// 	this-> speed = t_speed;
+	// 	direzione = LOW;
+	// }
+	// else
+	// {
+	// 	this-> speed = -t_speed;
+	// 	direzione = HIGH;
+	// }
+
 	digitalWrite(pin_a, direzione);
 	digitalWrite(pin_b, !direzione);
 	analogWrite(pin_pwm, speed);
