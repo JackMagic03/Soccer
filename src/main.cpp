@@ -1,8 +1,6 @@
 /**
  * main.cpp
  */
-
-
 #include "Arduino.h"
 #include "globals.hpp"
 #include <mors_lineHandler.hpp>
@@ -25,6 +23,4 @@ void loop()
   Serial.print("Hello World!\n");
   joint_vect[0].setSpeed(10);
   delay(500);
-  
-  
 }
