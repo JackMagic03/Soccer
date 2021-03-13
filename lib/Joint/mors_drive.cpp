@@ -66,17 +66,17 @@ void MorsDrive::handle(float t_angle, int t_speed, float t_imu)
 		speed[i] = 	matrix [i][0] * (v_x) +
 					matrix [i][1] * (v_y) +
 					matrix [i][2] * (t_imu);
-		// if(speed[i] > MAX_VEL)
-		// {
-		// 	speed[i] = MAX_VEL;
-		// }
-		// else if(speed[i] < MIN_VEL)
-		// {
-		// 	speed[i] = MIN_VEL;
-		// }
-		//joint[i].setSpeed(speed[i]); //passo la velocita alla classe dei motori
+		if(speed[i] > MAX_VEL)
+		{
+			speed[i] = MAX_VEL;
+		}
+		else if(speed[i] < MIN_VEL)
+		{
+			speed[i] = MIN_VEL;
+		}
+		joint[i].setSpeed(speed[i]); //passo la velocita alla classe dei motori
 
-		//joint[i].handle();//speed[i]); //muovo i giunti
+		joint[i].handle();//speed[i]); //muovo i giunti
 
 		Serial.print("Speed ");
 		Serial.print(i);
